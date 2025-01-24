@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Input Form</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+        div button{
+           margin-top: 15px; 
+        }
+
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <h1>Blockchain Record Fetcher</h1>
+
+        <!-- Fetch Heart Record -->
+        <div class="form-section">
+            <h2>Fetch Heart Record by Index</h2>
+            <input type="number" id="heartIndex" placeholder="Enter Heart Record Index">
+            <button id="fetchHeartButton" onclick="fetchHeartRecord()">Fetch Heart Record</button>
+        </div>
+
+        <!-- Fetch Diabetes Record -->
+        <div class="form-section">
+            <h2>Fetch Diabetes Record by Index</h2>
+            <input type="number" id="diabetesIndex" placeholder="Enter Diabetes Record Index">
+            <button id="fetchDiabetesButton" onclick="fetchDiabetesRecord()">Fetch Diabetes Record</button>
+        </div>
+
+        <!-- Fetch All Records -->
+        <div class="form-section">
+            <h2>Fetch All Records</h2>
+            <button id="fetchAllHeartButton" onclick="fetchAllHeartRecords()">Fetch All Heart Records</button>
+            <button id="fetchAllDiabetesButton" onclick="fetchAllDiabetesRecords()">Fetch All Diabetes Records</button>
+        </div>
+
+        <div id="loadingIndicator" style="display: none;">
+            <p>Please wait while the data is being processed...</p>
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Display Records -->
+        <div id="recordDisplay" class="record-display"></div>
+    </div>
+    
+    <div class="form-container">
+        <h2>Diabetes Input Form</h2>
+
+        <!-- Buttons to switch between forms -->
+        <div class="form-group">
+            <button type="button" onclick="showForm('basicForm')">Diabetes</button>
+            <button type="button" onclick="showForm('fullForm')">Heart</button>
+        </div>
+
+        <!-- Basic Form -->
+        <form id="basicForm" class="hidden">
+            <h3>Diabetes Metrics</h3>
+            <div class="form-group">
+                <label for="pregnancies">Pregnancies</label>
+                <input type="number" id="pregnancies" name="pregnancies" value="0">
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose</label>
+                <input type="number" id="glucose" name="glucose" value="0">
+            </div>
+            <div class="form-group">
+                <label for="bloodPressure">Blood Pressure</label>
+                <input type="number" id="bloodPressure" name="bloodPressure" value="0">
+            </div>
+            <div class="form-group">
+                <label for="skinThickness">Skin Thickness</label>
+                <input type="number" id="skinThickness" name="skinThickness" value="0">
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin</label>
+                <input type="number" id="insulin" name="insulin" value="0">
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI</label>
+                <input type="number" id="bmi" name="bmi" value="0">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" value="0">
+            </div>
+            <div class="form-group">
+                <label for="diabetesPedigreeFunction">Diabetes Pedigree Function</label>
+                <input type="number" id="diabetesPedigreeFunction" name="diabetesPedigreeFunction" value="0">
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="submitForm('basicForm')">Submit Full Form</button>
+            </div>
+        </form>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" style="display: none;">
+            <div class="spinner"></div>
+            <p>Please wait while the data is being processed...</p>
+        </div>
+         <!-- Prediction Result -->
+         <div id="predictionResult" class="prediction-result" style="display: none;">
+            <h3>Prediction Result</h3>
+            <p id="predictionText"></p>
+        </div>
+
+        <!-- Full Form -->
+        <form id="fullForm" class="hidden">
+            <h3>Heart Metrics</h3>
+            <div class="form-group">
+                <label for="feature1">feature1</label>
+                <input type="feature1" id="feature1" name="feature1" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature2">feature2</label>
+                <input type="feature2" id="feature2" name="feature2" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature3">feature3</label>
+                <input type="feature3" id="feature3" name="feature3" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature4">feature4</label>
+                <input type="feature4" id="feature4" name="feature4" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature5">feature5</label>
+                <input type="feature5" id="feature5" name="feature5" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature6">feature6</label>
+                <input type="feature6" id="feature6" name="feature6" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature7">feature7</label>
+                <input type="feature7" id="feature7" name="feature7" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature8">feature8</label>
+                <input type="number" id="feature8" name="feature8" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature9">Feature 9</label>
+                <input type="number" id="feature9" name="feature9" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature10">Feature 10</label>
+                <input type="number" id="feature10" name="feature10" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature11">Feature 11</label>
+                <input type="number" id="feature11" name="feature11" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature12">Feature 12</label>
+                <input type="number" id="feature12" name="feature12" value="0">
+            </div>
+            <div class="form-group">
+                <label for="feature13">Feature 13</label>
+                <input type="number" id="feature13" name="feature13" value="0">
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="submitForm('fullForm')">Submit Full Form</button>
+            </div>
+        </form>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" style="display: none;">
+            <div class="spinner"></div>
+            <p>Please wait while the data is being processed...</p>
+        </div>
+
+        <!-- Prediction Result -->
+        <div id="predictionResult" class="prediction-result" style="display: none;">
+            <h3>Prediction Result</h3>
+            <p id="predictionText"></p>
+        </div>
+    </div>
+    <script>
+        let lastSubmittedData = null;
+        let isSubmitting = false;
+        
+        function showForm(formId) {
+            document.getElementById('basicForm').classList.add('hidden');
+            document.getElementById('fullForm').classList.add('hidden');
+            document.getElementById(formId).classList.remove('hidden');
+        }
+        
+        async function submitForm(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+        
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = Number(value);
+            });
+        
+            console.log("Form Data:", data);
+        
+            try{
+            const apiUrl =
+            formId === "basicForm"? "http://127.0.0.1:3000/predict/diabetes": "http://127.0.0.1:3000/predict/heart";
+        
+              const response = await fetch(apiUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+        });
+        
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+        
+                const result = await response.json();
+                console.log("Response from server:", result);
+        
+                if (result.prediction !== undefined) {
+                    const predictionResult = document.getElementById('predictionResult');
+                    const predictionText = document.getElementById('predictionText');
+        
+                    predictionResult.style.display = 'none';
+        
+                    console.log("Prediction Value:", result.prediction);
+        
+                    if (hasDataChanged(data, result.prediction)) {
+                        if (!isSubmitting) {
+                            isSubmitting = true;
+        
+                            document.getElementById('loadingIndicator').style.display = 'block';
+    
+                            await storePredictionOnBlockchain(data, result.prediction, formId);
+        
+                            document.getElementById('loadingIndicator').style.display = 'none';
+        
+                            predictionText.textContent = result.prediction === 1
+                                ? 'Patient has diabetes'
+                                : 'Patient is healthy';
+                            predictionResult.style.display = 'block';
+        
+                            console.log("Prediction stored on blockchain.");
+                        } else {
+                            alert("Submission already in progress, please wait.");
+                        }
+                    } else {
+                        alert("No change in data, not submitting to blockchain.");
+                    }
+                } else {
+                    alert(`Error: ${result.error}`);
+                }
+            } catch (error) {
+                console.error("Error while submitting form:", error);
+                alert('Failed to submit the form. Please try again.');
+            } finally {
+                isSubmitting = false;
+            }
+        }
+        
+        function hasDataChanged(currentData, prediction) {
+            const currentDataWithPrediction = { ...currentData, prediction };
+            if (!lastSubmittedData) {
+                return true;
+            }
+        
+            for (const key in currentDataWithPrediction) {
+                if (currentDataWithPrediction[key] !== lastSubmittedData[key]) {
+                    return true;
+                }
+            }
+        
+            return false;
+        }
+        
+        async function storePredictionOnBlockchain(formData, prediction, formid) {
+            try {
+                console.log("Storing data on blockchain...");
+        
+                const dataToStore = { ...formData, prediction };
+                console.log("Data being stored on blockchain:", dataToStore);
+    
+                const blockchainUrl =
+            formid === "basicForm"? "http://localhost:3000/api/blockchain/store-diabetes": "http://localhost:3000/api/blockchain/store-heart";
+        
+                const blockchainResponse = await fetch(blockchainUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify([dataToStore]),
+                });
+        
+                if (blockchainResponse.ok) {
+                    console.log("Blockchain API response status:", blockchainResponse.status);
+                    const blockchainResult = await blockchainResponse.json();
+                    console.log("Data stored successfully on the blockchain:", blockchainResult);
+        
+                    lastSubmittedData = dataToStore;
+                } else {
+                    throw new Error('Failed to store data on the blockchain.');
+                }
+            } catch (error) {
+                console.error("Error storing data on the blockchain:", error);
+                console.log('Failed to store data on the blockchain. Please try again.');
+            } finally {
+                isSubmitting = false;
+            }
+        }
+    
+        function disableButton(buttonId) {
+            const button = document.getElementById(buttonId);
+            button.disabled = true;  // Disable the button
+        }
+        
+        function enableButton(buttonId) {
+            const button = document.getElementById(buttonId);
+            button.disabled = false;  // Re-enable the button
+        }
+
+        function toggleLoadingIndicator(show) {
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            loadingIndicator.style.display = show ? 'block' : 'none';
+        }
+
+        function displayRecords(records) {
+            const displayDiv = document.getElementById('recordDisplay');
+            // Ensure the displayDiv is cleared before adding new data
+            displayDiv.innerHTML = '';
+        
+            if (Array.isArray(records)) {
+                records.forEach(record => {
+                    const recordElement = document.createElement('pre');
+                    recordElement.textContent = JSON.stringify(record, null, 2);  // Format the record
+                    displayDiv.appendChild(recordElement);
+                });
+            } else {
+                const recordElement = document.createElement('pre');
+                recordElement.textContent = JSON.stringify(records, null, 2);  // If it's a single object
+                displayDiv.appendChild(recordElement);
+            }
+        }
+        
+    
+    async function fetchHeartRecordByIndex() {
+    disableButton('fetchHeartButton');
+    
+    const heartIndex = document.getElementById('heartIndex').value;
+    if (!heartIndex) {
+        alert('Please enter a valid index.');
+        enableButton('fetchHeartButton');
+        return;
+    }
+    
+    toggleLoadingIndicator(true);
+    
+    try {
+        const response = await fetch(`http://localhost:3000/api/blockchain/heart/record/${heartIndex}`);
+        const data = await response.json();
+        
+        // Call displayRecords to show the fetched data
+        displayRecords(data);
+    } catch (error) {
+        console.error('Error fetching heart record:', error);
+    } finally {
+        enableButton('fetchHeartButton');
+        toggleLoadingIndicator(false);
+    }
+}
+
+async function fetchDiabetesRecordByIndex() {
+    disableButton('fetchDiabetesButton');
+    
+    const diabetesIndex = document.getElementById('diabetesIndex').value;
+    if (!diabetesIndex) {
+        alert('Please enter a valid index.');
+        enableButton('fetchDiabetesButton');
+        return;
+    }
+    
+    toggleLoadingIndicator(true);
+    
+    try {
+        const response = await fetch(`http://localhost:3000/api/blockchain/heart/record/${diabetesIndex}`);
+        const data = await response.json();
+        
+        // Call displayRecords to show the fetched data
+        displayRecords(data);
+    } catch (error) {
+        console.error('Error fetching diabetes record:', error);
+    } finally {
+        enableButton('fetchDiabetesButton');
+        toggleLoadingIndicator(false);
+    }
+}
+
+async function fetchAllHeartRecords() {
+    disableButton('fetchAllHeartButton');
+    
+    toggleLoadingIndicator(true);
+    
+    try {
+        const response = await fetch('http://localhost:3000/api/blockchain/heart/all-records');
+        const data = await response.json();
+        
+        // Call displayRecords to show the fetched data
+        displayRecords(data);
+    } catch (error) {
+        console.error('Error fetching all heart records:', error);
+    } finally {
+        enableButton('fetchAllHeartButton');
+        toggleLoadingIndicator(false);
+    }
+}
+
+async function fetchAllDiabetesRecords() {
+    disableButton('fetchAllDiabetesButton');
+    
+    toggleLoadingIndicator(true);
+    
+    try {
+        const response = await fetch('http://localhost:3000/api/blockchain/diabetes/all-records');
+        const data = await response.json();
+        
+        // Call displayRecords to show the fetched data
+        displayRecords(data);
+    } catch (error) {
+        console.error('Error fetching all diabetes records:', error);
+    } finally {
+        enableButton('fetchAllDiabetesButton');
+        toggleLoadingIndicator(false);
+    }
+}
+
+    </script>
+</body>

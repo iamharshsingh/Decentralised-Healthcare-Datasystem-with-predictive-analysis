@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI HealthCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gradient-to-r from-blue-900 to-purple-900 text-white">
+
+    <!-- Navbar -->
+    <nav class="bg-black p-4 flex justify-between items-center">
+        <div class="text-xl font-bold">
+            <span class="text-white">AI Health</span><span class="text-blue-500">Care</span>
+        </div>
+        <div class="space-x-4">
+            <a href="#" class="text-white">Home</a>
+            <a href="#" class="text-white">Services</a>
+            <a href="#" class="text-white">About</a>
+            <a href="#" class="text-white">Contact</a>
+            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container mx-auto px-4 py-20">
+        <div class="text-center md:text-left">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">AI-Powered Health Analytics</h1>
+            <p class="text-lg md:text-xl mb-8">
+                Get instant health insights powered by advanced AI. Check your risk factors for diabetes, heart disease, and more with our cutting-edge analysis tools.
+            </p>
+            <div class="flex justify-center md:justify-start space-x-4">
+                <a href="#" class="bg-blue-500 text-white px-6 py-3 rounded-full text-lg flex items-center space-x-2">
+                    <span>Start Analysis</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#" class="border border-white text-white px-6 py-3 rounded-full text-lg">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 text-gray-900 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold sm:text-4xl">Advanced Health Analysis Features</h2>
+                <p class="mt-4 text-lg text-gray-500">
+                    Discover our AI-powered tools for comprehensive health assessment.
+                </p>
+            </div>
+            <!-- Feature Grid -->
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center space-x-4">
+                        <span class="bg-blue-500 p-3 rounded-md text-white">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                        <h3 class="text-lg font-bold">Heart Disease Analysis</h3>
+                    </div>
+                    <p class="mt-4 text-gray-500">
+                        AI algorithms analyze your cardiac health indicators to assess potential risks.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center space-x-4">
+                        <span class="bg-purple-500 p-3 rounded-md text-white">
+                            <i class="fas fa-vial"></i>
+                        </span>
+                        <h3 class="text-lg font-bold">Diabetes Screening</h3>
+                    </div>
+                    <p class="mt-4 text-gray-500">
+                        Comprehensive diabetes screening using machine learning algorithms.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center space-x-4">
+                        <span class="bg-green-500 p-3 rounded-md text-white">
+                            <i class="fas fa-shield-alt"></i>
+                        </span>
+                        <h3 class="text-lg font-bold">Health Recommendations</h3>
+                    </div>
+                    <p class="mt-4 text-gray-500">
+                        Personalized health insights and actionable recommendations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostic Form -->
+    <section class="bg-gray-900 text-white py-16">
+        <div class="max-w-lg mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-6">AI Health Diagnostics</h2>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-300 mb-2">Select Diagnostic Type</label>
+                    <select class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                        <option>Diabetes Risk Assessment</option>
+                        <option>Heart Disease Analysis</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Age</label>
+                        <input type="number" placeholder="Enter age" class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Gender</label>
+                        <select class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Blood Pressure</label>
+                        <input type="text" placeholder="Systolic" class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">&nbsp;</label>
+                        <input type="text" placeholder="Diastolic" class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-300 mb-2">Blood Sugar (mg/dL)</label>
+                    <input type="number" placeholder="Enter blood sugar level" class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-300 mb-2">BMI</label>
+                    <input type="number" placeholder="Body Mass Index" class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                </div>
+                <button type="submit" class="w-full p-3 bg-blue-600 rounded hover:bg-blue-700">
+                    Start Analysis →
+                </button>
+            </form>
+        </div>
+    </section>
+    <title>How It Works</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Container -->
+    <div class="container mx-auto px-4 py-16">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold">How It Works</h2>
+            <p class="text-gray-500">Simple steps to get your health analysis</p>
+        </div>
+
+        <!-- Steps Section -->
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+            <!-- Step 1 -->
+            <div class="flex flex-col items-center md:items-start">
+                <div class="relative bg-white shadow-lg rounded-lg p-6 w-80">
+                    <h3 class="text-xl font-semibold mb-2">Enter Your Information</h3>
+                    <p class="text-gray-500">Provide basic health metrics and symptoms through our user-friendly interface. All data is encrypted and secure.</p>
+                    <div class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                        1
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-pencil-alt text-blue-500 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex flex-col items-center md:items-start">
+                <div class="mt-8 md:mt-0">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-desktop text-blue-500 text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative bg-white shadow-lg rounded-lg p-6 w-80 mt-8 md:mt-0">
+                    <h3 class="text-xl font-semibold mb-2">AI Analysis</h3>
+                    <p class="text-gray-500">Our advanced AI algorithms process your data to identify potential health risks and patterns.</p>
+                    <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                        2
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex flex-col items-center md:items-start">
+                <div class="relative bg-white shadow-lg rounded-lg p-6 w-80">
+                    <h3 class="text-xl font-semibold mb-2">Get Results</h3>
+                    <p class="text-gray-500">Receive detailed health insights and personalized recommendations within minutes.</p>
+                    <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                        3
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-check-circle text-blue-500 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-12">
+        <button class="bg-blue-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-blue-600 transition duration-300">
+            Get Started Now <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+    </div>
+</body>
+ 
+            <body class="bg-gray-900 text-white">
+                <div class="max-w-4xl mx-auto py-12">
+                    <h1 class="text-4xl font-bold text-center mb-2">What Our Users Say</h1>
+                    <p class="text-center text-gray-400 mb-8">Real experiences from people who trust our AI health analysis</p>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">JD</div>
+                                <div class="ml-4">
+                                    <h2 class="text-xl font-semibold">John Doe</h2>
+                                    <p class="text-gray-400">Diabetes Prevention</p>
+                                </div>
+                            </div>
+                            <p class="mb-4">"The AI analysis helped me identify my diabetes risk factors early. The recommendations were practical and easy to follow. I've made significant improvements to my health since then."</p>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Sarah Johnson's Testimonial -->
+                        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-lg">SJ</div>
+                                <div class="ml-4">
+                                    <h2 class="text-xl font-semibold">Sarah Johnson</h2>
+                                    <p class="text-gray-400">Heart Health Check</p>
+                                </div>
+                            </div>
+                            <p class="mb-4">"The heart health analysis was eye-opening. It helped me understand my cardiovascular risks and provided actionable steps to improve my heart health."</p>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+                <body class="bg-gray-50">
+                    <div class="container mx-auto px-4 py-12">
+                        <div class="text-center mb-12">
+                            <h1 class="text-3xl font-bold text-gray-900">Health Insights & Articles</h1>
+                            <p class="text-gray-600">Stay informed with the latest health research and tips</p>
+                        </div>
+                        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                            <!-- Card 1 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                <div class="bg-gray-100 p-6 flex justify-center">
+                                    <i class="fas fa-flask text-4xl text-gray-400"></i>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Diabetes</span>
+                                        <span class="text-gray-500 text-sm">5 min read</span>
+                                    </div>
+                                    <h2 class="text-lg font-bold text-gray-900 mb-2">Understanding Early Signs of Diabetes</h2>
+                                    <p class="text-gray-600 mb-4">Learn about the early warning signs of diabetes and how AI can help in early detection.</p>
+                                    <a href="#" class="text-blue-600 font-semibold">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                <div class="bg-gray-100 p-6 flex justify-center">
+                                    <i class="fas fa-heart text-4xl text-gray-400"></i>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Heart Health</span>
+                                        <span class="text-gray-500 text-sm">7 min read</span>
+                                    </div>
+                                    <h2 class="text-lg font-bold text-gray-900 mb-2">Heart Disease Prevention Tips</h2>
+                                    <p class="text-gray-600 mb-4">Discover how AI-powered analysis can help identify heart disease risk factors early.</p>
+                                    <a href="#" class="text-blue-600 font-semibold">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                <div class="bg-gray-100 p-6 flex justify-center">
+                                    <i class="fas fa-clipboard text-4xl text-gray-400"></i>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex items-center mb-4">
+                                        <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Lifestyle</span>
+                                        <span class="text-gray-500 text-sm">4 min read</span>
+                                    </div>
+                                    <h2 class="text-lg font-bold text-gray-900 mb-2">AI in Preventive Healthcare</h2>
+                                    <p class="text-gray-600 mb-4">How artificial intelligence is revolutionizing preventive healthcare and early diagnosis.</p>
+                                    <a href="#" class="text-blue-600 font-semibold">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                    <body class="bg-gray-900 text-white">
+                        <div class="container mx-auto py-12 px-4">
+                            <h1 class="text-4xl font-bold text-center mb-4">Get in Touch</h1>
+                            <p class="text-center text-gray-400 mb-8">Have questions? We're here to help with your health journey</p>
+                            <div class="flex flex-col lg:flex-row justify-center items-start lg:items-center space-y-8 lg:space-y-0 lg:space-x-16">
+                                <div class="space-y-8">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="bg-gray-800 p-3 rounded-full">
+                                            <i class="fas fa-phone-alt text-blue-500"></i>
+                                        </div>
+                                        <div>
+                                            <h2 class="text-xl font-semibold">Phone Support</h2>
+                                            <p class="text-gray-400">Mon-Fri from 8am to 5pm</p>
+                                            <p class="text-blue-500">+1 (234) 567-890</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="bg-gray-800 p-3 rounded-full">
+                                            <i class="fas fa-envelope text-blue-500"></i>
+                                        </div>
+                                        <div>
+                                            <h2 class="text-xl font-semibold">Email</h2>
+                                            <p class="text-gray-400">We'll respond within 24 hours</p>
+                                            <p class="text-blue-500">support@aihealth.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="bg-gray-800 p-3 rounded-full">
+                                            <i class="fas fa-map-marker-alt text-blue-500"></i>
+                                        </div>
+                                        <div>
+                                            <h2 class="text-xl font-semibold">Location</h2>
+                                            <p class="text-gray-400">123 Health Street</p>
+                                            <p class="text-gray-400">New York, NY 10001</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800 p-8 rounded-lg w-full lg:w-1/2">
+                                    <form>
+                                        <div class="mb-4">
+                                            <label for="name" class="block text-gray-400 mb-2">Name</label>
+                                            <input type="text" id="name" class="w-full p-3 bg-gray-700 text-gray-300 rounded" placeholder="Your name">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="email" class="block text-gray-400 mb-2">Email</label>
+                                            <input type="email" id="email" class="w-full p-3 bg-gray-700 text-gray-300 rounded" placeholder="you@example.com">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="subject" class="block text-gray-400 mb-2">Subject</label>
+                                            <select id="subject" class="w-full p-3 bg-gray-700 text-gray-300 rounded">
+                                                <option>General Inquiry</option>
+                                                <option>Support</option>
+                                                <option>Feedback</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="message" class="block text-gray-400 mb-2">Message</label>
+                                            <textarea id="message" class="w-full p-3 bg-gray-700 text-gray-300 rounded" rows="4" placeholder="Your message"></textarea>
+                                        </div>
+                                        <button type="submit" class="w-full p-3 bg-blue-600 text-white rounded">Send Message</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </body>
+</body>
+</html>
