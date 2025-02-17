@@ -1,0 +1,363 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "pregnancies",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "glucose",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodPressure",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "skinThickness",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "insulin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bmi",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "diabetesPedigreeFunction",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prediction",
+						"type": "uint256"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct DiabetesStorage.DiabetesData",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "DataStored",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "diabetesRecords",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "pregnancies",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "glucose",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "bloodPressure",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "skinThickness",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "insulin",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "bmi",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "diabetesPedigreeFunction",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "prediction",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getDiabetesData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "pregnancies",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "glucose",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodPressure",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "skinThickness",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "insulin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bmi",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "diabetesPedigreeFunction",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prediction",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DiabetesStorage.DiabetesData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getDiabetesPedigreeFunction",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getPrediction",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getRecord",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "pregnancies",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "glucose",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodPressure",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "skinThickness",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "insulin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bmi",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "diabetesPedigreeFunction",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prediction",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DiabetesStorage.DiabetesData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getRecordCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_pregnancies",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_glucose",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_bloodPressure",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_skinThickness",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_insulin",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_bmi",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_diabetesPedigreeFunction",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_prediction",
+				"type": "uint256"
+			}
+		],
+		"name": "storeDiabetesData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
