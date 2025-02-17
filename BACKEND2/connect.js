@@ -5,10 +5,11 @@ const cors = require('cors');
 require("dotenv").config(); 
 const moongoose = require('mongoose');
 const PORT = 3000;
-const MONGODB_URL = process.env.MONGODB_URL 
+const MONGODB_URL = 'mongodb+srv://Ananddb:Anand2003@cluster0.hhg4k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const User = require('./models/userSchema');  
   
-const userRoutes = require('../routes/userRoutes'); 
-const blockchainRouter = require('../routes/blockchain');
+const userRoutes = require('./routes/userRoutes'); 
+const blockchainRouter = require('./routes/blockchain');
 
 app.use(
     cors({
@@ -30,9 +31,22 @@ moongoose.connect(MONGODB_URL, {
     .then(() => {
         console.log("Database connected successfully");
 
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
     })
     .catch((error) => {
         console.error("Database connection failed:", error);7
     });
 
-module.exports = serverless(app);
+
+process.on("unhandledRejection", (reason) => {
+    console.error("Unhandled Rejection:", reason);
+    process.exit(1);
+});
+
+process.on("uncaughtException", (error) => {
+    console.error("Uncaught Exception:", error);
+    process.exit(1);
+});
+
