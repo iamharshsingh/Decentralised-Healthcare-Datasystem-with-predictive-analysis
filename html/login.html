@@ -60,14 +60,21 @@
             <button type="submit">Login</button>
         </form>
     </div>
-<body>         
+<body>        
     <script>
+           // Check if the user is logged in (token exists in localStorage)
+           const token = localStorage.getItem("accessToken");
+        
+           if (!token) {
+               alert("You must log in first!");
+               window.location.href = "login.html"; // Redirect to login page
+           }
+
         document.getElementById('loginForm').addEventListener('submit', async (event) => {
             event.preventDefault();
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-
 
 
             try {
@@ -83,7 +90,7 @@
                     
                     // Save access and refresh tokens locally
                     localStorage.setItem('accessToken', result.accessToken);
-                    document.cookie = `refreshToken=${result.refreshToken}; path=/; secure; httpOnly`;
+                    document.cookie = `refreshToken=${result.refreshToken}; path=/; secure`;
 
                     window.location.href = 'checkup.html'; // Redirect to dashboard or another page
                 } else {

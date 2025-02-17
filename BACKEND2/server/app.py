@@ -131,6 +131,46 @@ def predict_heart():
     except Exception as e:
         # In case of any error, return the error message
         return jsonify({'error': str(e)}), 400
+    
+lungCancer_model_path = os.path.join(os.path.dirname(__file__), 'classification_model.pkl5')
+
+# Load the ML model
+with open(lungCancer_model_path, 'rb') as f:
+    lungCancer_model = pickle.load(f)
+    
+    
+print("Model Details:", lungCancer_model)
+print("Model's feature names:", lungCancer_model.feature_names_in_)
+print("Model's coefficients:", lungCancer_model.coef_)
+
+@app.route('/predict/lung', methods=['POST'])
+def predict_lung_cancer():
+    try:
+        data = request.json
+
+        # Extract features
+        features = [
+            data['AGE'], data['SMOKING'], data['YELLOW_FINGERS'], data['ANXIETY'],
+            data['PEER_PRESSURE'], data['CHRONIC_DISEASE'], data['FATIGUE'],
+            data['ALLERGY'], data['WHEEZING'], data['ALCOHOL_CONSUMING'],
+            data['COUGHING'], data['SHORTNESS_OF_BREATH'], data['SWALLOWING_DIFFICULTY'],
+            data['CHEST_PAIN']
+        ]
+
+        # Convert features to DataFrame with proper column names
+        features_df = pd.DataFrame([features], columns=lungCancer_model.feature_names_in_)
+
+        # Make prediction using the DataFrame
+        prediction = lungCancer_model.predict(features_df)
+
+        # Return prediction as JSON
+        result = {'LUNG_CANCER': "YES" if prediction[0] == 1 else "NO"}
+
+        return jsonify(result)
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
