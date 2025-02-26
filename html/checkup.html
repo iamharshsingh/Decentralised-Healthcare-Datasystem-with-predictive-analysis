@@ -303,14 +303,14 @@
       try {
         let apiUrl = "";
         if (formId === "basicForm") {
-          apiUrl = "https://render-1-rchr.onrender.com/predict/diabetes";
+          apiUrl = "http://127.0.0.1:10000/predict/diabetes";
         } else if (formId === "fullForm") {
-          apiUrl = "https://render-1-rchr.onrender.com/predict/heart";
+          apiUrl = "http://127.0.0.1:10000/predict/heart";
         } else if (formId === "lungForm") {
         for (let key in data) {
             data[key] = data[key] === "YES" ? 1 : 0;
         }
-          apiUrl = "https://render-1-rchr.onrender.com/predict/lung";
+          apiUrl = "http://127.0.0.1:10000/predict/lung";
         }
         
         const response = await fetch(apiUrl, {
@@ -398,7 +398,7 @@
     async function refreshToken() {
       try {
         console.log("🔄 Attempting to refresh access token...");
-        const response = await fetch("https://render-9r49.onrender.com/api/user/refresh", {
+        const response = await fetch("http://localhost:3002/api/user/refresh", {
           method: "POST",
           credentials: "include"
         });
@@ -450,11 +450,11 @@
         console.log("Data being stored on blockchain:", dataToStore);
         let blockchainUrl = "";
         if (formId === "basicForm") {
-          blockchainUrl = "https://render-1-yyer.onrender.com/api/blockchain/store-diabetes";
+          blockchainUrl = "http://localhost:3002/api/blockchain/store-diabetes";
         } else if (formId === "fullForm") {
-          blockchainUrl = "https://render-1-yyer.onrender.com/api/blockchain/store-heart";
+          blockchainUrl = "http://localhost:3002/api/blockchain/store-heart";
         } else if (formId === "lungForm") {
-          blockchainUrl = "https://render-1-yyer.onrender.com/api/blockchain/store-lung";
+          blockchainUrl = "http://localhost:3002/api/blockchain/store-lung";
         }
         const blockchainResponse = await fetch(blockchainUrl, {
           method: 'POST',
@@ -524,7 +524,7 @@
         document.getElementById('fetchAllUserDiabetesLoadingIndicator').style.display = 'block';
         
         try {
-          const response = await fetch('https://render-9r49.onrender.com/api/blockchain/diabetes/all-user-records', {
+          const response = await fetch('http://localhost:3002/api/blockchain/diabetes/all-user-records', {
             headers: {
               "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -549,7 +549,7 @@
         document.getElementById('fetchAllUserHeartLoadingIndicator').style.display = 'block';
         
         try {
-          const response = await fetch('https://render-9r49.onrender.com/api/blockchain/heart/all-user-records', {
+          const response = await fetch('http://localhost:3002/api/blockchain/heart/all-user-records', {
             headers: {
               "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -574,7 +574,7 @@
         document.getElementById('fetchAllUserLungLoadingIndicator').style.display = 'block';
         
         try {
-          const response = await fetch('https://render-9r49.onrender.com/api/blockchain/lung/all-user-records', {
+          const response = await fetch('http://localhost:3002/api/blockchain/lung/all-user-records', {
             headers: {
               "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
             }

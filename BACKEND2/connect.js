@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 require("dotenv").config(); 
 const moongoose = require('mongoose');
-const PORT = 3000;
+const PORT = 3002;
 const MONGODB_URL = 'mongodb+srv://Ananddb:Anand2003@cluster0.hhg4k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const User = require('./models/userSchema');  
   
@@ -13,7 +13,7 @@ const blockchainRouter = require('./routes/blockchain');
 
 app.use(
     cors({
-        origin: "https://render-2.vercel.app", 
+        origin: ["https://render-2.vercel.app","http://localhost:3000"], 
         credentials: true, // Allow cookies
     })
 );
