@@ -13,7 +13,7 @@ const blockchainRouter = require('./routes/blockchain');
 
 app.use(
     cors({
-        origin: "https://render-2-77778u7kk-anand-singh-tomars-projects.vercel.app/", 
+        origin: "https://render-2.vercel.app", 
         credentials: true, // Allow cookies
     })
 );
