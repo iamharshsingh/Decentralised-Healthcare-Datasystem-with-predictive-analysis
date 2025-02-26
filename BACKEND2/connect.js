@@ -13,7 +13,7 @@ const blockchainRouter = require('./routes/blockchain');
 
 app.use(
     cors({
-        origin: "https://html-lovat-ten.vercel.app/", 
+        origin: "http://localhost:3001", 
         credentials: true, // Allow cookies
     })
 );

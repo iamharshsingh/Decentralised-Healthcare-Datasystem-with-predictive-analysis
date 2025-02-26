@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs/
 *.log
@@ -34,3 +35,6 @@ dist-ssr/
 .env.*.local
 coverage/
 
+=======
+.vercel
+>>>>>>> 2da64bb ( Render deployment)
