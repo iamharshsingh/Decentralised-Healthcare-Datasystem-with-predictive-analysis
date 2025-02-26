@@ -65,10 +65,7 @@
            // Check if the user is logged in (token exists in localStorage)
            const token = localStorage.getItem("accessToken");
         
-           if (!token) {
-               alert("You must log in first!");
-               window.location.href = "login.html"; // Redirect to login page
-           }
+          
 
         document.getElementById('loginForm').addEventListener('submit', async (event) => {
             event.preventDefault();

@@ -159,66 +159,97 @@
     <!-- Lung Cancer Form -->
     <form id="lungForm" class="hidden">
       <h3>Lung Cancer Metrics</h3>
-      <!-- Required fields for lung cancer prediction -->
+    
+      <!-- AGE remains a number input -->
       <div class="form-group">
         <label for="AGE">AGE</label>
         <input type="number" id="AGE" name="AGE" value="0" />
       </div>
+    
+      <!-- All other metrics as YES/NO options -->
       <div class="form-group">
-        <label for="SMOKING">SMOKING</label>
-        <input type="number" id="SMOKING" name="SMOKING" value="0" />
+        <label>SMOKING</label>
+        <label><input type="radio" name="SMOKING" value="YES" /> YES</label>
+        <label><input type="radio" name="SMOKING" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="YELLOW_FINGERS">YELLOW FINGERS</label>
-        <input type="number" id="YELLOW_FINGERS" name="YELLOW_FINGERS" value="0" />
+        <label>YELLOW FINGERS</label>
+        <label><input type="radio" name="YELLOW_FINGERS" value="YES" /> YES</label>
+        <label><input type="radio" name="YELLOW_FINGERS" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="ANXIETY">ANXIETY</label>
-        <input type="number" id="ANXIETY" name="ANXIETY" value="0" />
+        <label>ANXIETY</label>
+        <label><input type="radio" name="ANXIETY" value="YES" /> YES</label>
+        <label><input type="radio" name="ANXIETY" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="PEER_PRESSURE">PEER PRESSURE</label>
-        <input type="number" id="PEER_PRESSURE" name="PEER_PRESSURE" value="0" />
+        <label>PEER PRESSURE</label>
+        <label><input type="radio" name="PEER_PRESSURE" value="YES" /> YES</label>
+        <label><input type="radio" name="PEER_PRESSURE" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="CHRONIC_DISEASE">CHRONIC DISEASE</label>
-        <input type="number" id="CHRONIC_DISEASE" name="CHRONIC_DISEASE" value="0" />
+        <label>CHRONIC DISEASE</label>
+        <label><input type="radio" name="CHRONIC_DISEASE" value="YES" /> YES</label>
+        <label><input type="radio" name="CHRONIC_DISEASE" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="FATIGUE">FATIGUE</label>
-        <input type="number" id="FATIGUE" name="FATIGUE" value="0" />
+        <label>FATIGUE</label>
+        <label><input type="radio" name="FATIGUE" value="YES" /> YES</label>
+        <label><input type="radio" name="FATIGUE" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="ALLERGY">ALLERGY</label>
-        <input type="number" id="ALLERGY" name="ALLERGY" value="0" />
+        <label>ALLERGY</label>
+        <label><input type="radio" name="ALLERGY" value="YES" /> YES</label>
+        <label><input type="radio" name="ALLERGY" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="WHEEZING">WHEEZING</label>
-        <input type="number" id="WHEEZING" name="WHEEZING" value="0" />
+        <label>WHEEZING</label>
+        <label><input type="radio" name="WHEEZING" value="YES" /> YES</label>
+        <label><input type="radio" name="WHEEZING" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="ALCOHOL_CONSUMING">ALCOHOL CONSUMING</label>
-        <input type="number" id="ALCOHOL_CONSUMING" name="ALCOHOL_CONSUMING" value="0" />
+        <label>ALCOHOL CONSUMING</label>
+        <label><input type="radio" name="ALCOHOL_CONSUMING" value="YES" /> YES</label>
+        <label><input type="radio" name="ALCOHOL_CONSUMING" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="COUGHING">COUGHING</label>
-        <input type="number" id="COUGHING" name="COUGHING" value="0" />
+        <label>COUGHING</label>
+        <label><input type="radio" name="COUGHING" value="YES" /> YES</label>
+        <label><input type="radio" name="COUGHING" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="SHORTNESS_OF_BREATH">SHORTNESS OF BREATH</label>
-        <input type="number" id="SHORTNESS_OF_BREATH" name="SHORTNESS_OF_BREATH" value="0" />
+        <label>SHORTNESS OF BREATH</label>
+        <label><input type="radio" name="SHORTNESS_OF_BREATH" value="YES" /> YES</label>
+        <label><input type="radio" name="SHORTNESS_OF_BREATH" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="SWALLOWING_DIFFICULTY">SWALLOWING DIFFICULTY</label>
-        <input type="number" id="SWALLOWING_DIFFICULTY" name="SWALLOWING_DIFFICULTY" value="0" />
+        <label>SWALLOWING DIFFICULTY</label>
+        <label><input type="radio" name="SWALLOWING_DIFFICULTY" value="YES" /> YES</label>
+        <label><input type="radio" name="SWALLOWING_DIFFICULTY" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
-        <label for="CHEST_PAIN">CHEST PAIN</label>
-        <input type="number" id="CHEST_PAIN" name="CHEST_PAIN" value="0" />
+        <label>CHEST PAIN</label>
+        <label><input type="radio" name="CHEST_PAIN" value="YES" /> YES</label>
+        <label><input type="radio" name="CHEST_PAIN" value="NO" checked /> NO</label>
       </div>
+    
       <div class="form-group">
         <button type="button" onclick="submitForm('lungForm')">Submit Lung Cancer Data</button>
       </div>
+    </form>
+    
     </form>
 
     <!-- Loading Indicators for each form -->
@@ -265,7 +296,7 @@
       const formData = new FormData(form);
       const data = {};
       formData.forEach((value, key) => {
-        data[key] = Number(value);
+        data[key] = isNaN(value) ? value : Number(value); 
       });
       console.log("Form Data:", data);
 
@@ -276,8 +307,12 @@
         } else if (formId === "fullForm") {
           apiUrl = "https://render-1-rchr.onrender.com/predict/heart";
         } else if (formId === "lungForm") {
+        for (let key in data) {
+            data[key] = data[key] === "YES" ? 1 : 0;
+        }
           apiUrl = "https://render-1-rchr.onrender.com/predict/lung";
         }
+        
         const response = await fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
