@@ -5,86 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .form-container {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .form-container h2 {
-            margin-bottom: 1rem;
-        }
-        .form-container label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .form-container input {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-container button {
-            width: 100%;
-            padding: 0.8rem;
-            background: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .form-container button:hover {
-            background: #0056b3;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            margin: 0;
-        }
-        
-        form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        button {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-            margin-top: 12px;
-        }
-        
-        button:hover {
-            background-color: #45a049;
-        }
+     /* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        
-    </style>
+/* Global Body Styles */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+  color: #fff;
+  line-height: 1.6;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Form Container */
+.form-container {
+  background-color: #2b2b2b;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 350px;
+  margin: 20px;
+}
+
+/* Title */
+.form-container .title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #eaeaea;
+}
+
+/* Registration Form */
+.registerForm {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group .names {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #4f93ce;
+  outline: none;
+}
+
+/* Register Button */
+button.sign {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #4f93ce, #285f8f);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+button.sign:hover {
+  background: linear-gradient(135deg, #285f8f, #4f93ce);
+}
+
+/* Forgot Link */
+.forgot {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot a {
+  color: #4f93ce;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot a:hover {
+  color: #2C6BB2;
+}
+
+   </style>
 </head>
 <body>
-    <div class="form-container">
+    <!-- <div class="form-container">
         <h2>Register</h2>
         <form id="registerForm">
             <label for="username">Username</label>
@@ -92,9 +123,28 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter password" required>
             <button type="submit">Register</button>
-            <button id="loginbtn" type="button">already register</button>
-        </form>
-    </div>
+            <button id="loginbtn" type="button">Already register?</button>
+        </form> -->
+        <div class="form-container">
+            <p class="title">Register</p>
+            <form  id="registerForm" class="registerForm">
+                <div class="input-group">
+                    <label class="names" for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="">
+                </div>
+                <div class="input-group">
+                    <label class="names"  for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="">
+                    <div class="forgot">
+                    </div>
+                </div>
+                <button class="sign">Register</button>
+                <div id="login" class="forgot">
+                    <a rel="noopener noreferrer" href="login.html">Already Register?</a>
+                </div>  
+            </form>
+          </div>
+        </body>
 
     <script>
         document.getElementById('registerForm').addEventListener('submit', async (event) => {
@@ -135,9 +185,8 @@
                 alert('An error occurred during registration.');
             }
         });
-        document.getElementById('registerForm').addEventListener('click', async (event) => {
+        document.getElementById('login').addEventListener('click', async (event) => {
             window.location.href = 'login.html';
         });
     </script>
-</body>
 </html>

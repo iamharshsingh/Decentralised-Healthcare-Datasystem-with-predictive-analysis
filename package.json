@@ -9,7 +9,10 @@
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {
-    "concurrently": "^9.1.0"
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.9"
   },
   "scripts": {
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",

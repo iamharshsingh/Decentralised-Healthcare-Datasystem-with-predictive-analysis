@@ -99,89 +99,6 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_AGE",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_SMOKING",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_YELLOW_FINGERS",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_ANXIETY",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_PEER_PRESSURE",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_CHRONIC_DISEASE",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_FATIGUE",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_ALLERGY",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_WHEEZING",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_ALCOHOL_CONSUMING",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_COUGHING",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_SHORTNESS_OF_BREATH",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_SWALLOWING_DIFFICULTY",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_CHEST_PAIN",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_prediction",
-				"type": "uint256"
-			}
-		],
-		"name": "storeLungCancerData",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
 				"name": "index",
 				"type": "uint256"
 			}
@@ -489,6 +406,89 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_AGE",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_SMOKING",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_YELLOW_FINGERS",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ANXIETY",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_PEER_PRESSURE",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_CHRONIC_DISEASE",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_FATIGUE",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ALLERGY",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_WHEEZING",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ALCOHOL_CONSUMING",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_COUGHING",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_SHORTNESS_OF_BREATH",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_SWALLOWING_DIFFICULTY",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_CHEST_PAIN",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_prediction",
+				"type": "uint256"
+			}
+		],
+		"name": "storeLungCancerData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]

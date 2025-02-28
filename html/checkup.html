@@ -1,26 +1,10 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medical Input & Blockchain Record Fetcher</title>
-  <link rel="stylesheet" href="checkup.css" />
-  <style>
-    .hidden {
-      display: none;
-    }
-    div button {
-      margin-top: 15px;
-    }
-    .loading-container {
-      display: none;
-    }
-    .record-display {
-      margin-top: 20px;
-      background: #f4f4f4;
-      padding: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
@@ -50,7 +34,7 @@
   <div class="form-container">
     <h2>Medical Input Form</h2>
     <!-- Buttons to switch between forms -->
-    <div class="form-group">
+    <div class="form-groups">
       <button type="button" onclick="showForm('basicForm')">Diabetes</button>
       <button type="button" onclick="showForm('fullForm')">Heart</button>
       <button type="button" onclick="showForm('lungForm')">Lung Cancer</button>
@@ -253,15 +237,15 @@
     </form>
 
     <!-- Loading Indicators for each form -->
-    <div id="diabetesLoadingIndicator" class="loading-container">
+    <div id="diabetesLoadingIndicator" class="loading-container" style="display: none;">
       <p>Submitting diabetes data, please wait...</p>
       <div class="spinner"></div>
     </div>
-    <div id="heartLoadingIndicator" class="loading-container">
+    <div id="heartLoadingIndicator" class="loading-container" style="display: none;">
       <p>Submitting heart data, please wait...</p>
       <div class="spinner"></div>
     </div>
-    <div id="lungLoadingIndicator" class="loading-container">
+    <div id="lungLoadingIndicator" class="loading-container" style="display: none;" >
       <p>Submitting lung cancer data, please wait...</p>
       <div class="spinner"></div>
     </div>
@@ -307,9 +291,11 @@
         } else if (formId === "fullForm") {
           apiUrl = "https://render-1-yyer.onrender.com/predict/heart";
         } else if (formId === "lungForm") {
-        for (let key in data) {
-            data[key] = data[key] === "YES" ? 1 : 0;
-        }
+          for (let key in data) {
+            if (typeof data[key] === 'string') {
+              data[key] = data[key].trim().toUpperCase() === "YES" ? 1 : 0;
+            }
+          }
           apiUrl = "https://render-1-yyer.onrender.com/predict/lung";
         }
         

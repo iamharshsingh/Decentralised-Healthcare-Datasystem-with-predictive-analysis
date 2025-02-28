@@ -11,7 +11,7 @@ const PRIVATE_KEY = "3ee37d322c95fa45bbbd05e031e9b80019b3f4f40ec6fb438444bb2c376
 const PROVIDER_URL = `https://eth-sepolia.g.alchemy.com/v2/igJwO1ukirxhkpXtmpRkrCzsy84QJund`
 const CONTRACT_ADDRESS = "0xf7859d9ac2B83053F1fcae5c7C7E3B06656A3327"// 0xa984359f15A6a3c967F429448ff0C35B929D14B9" 
 const CONTRACT_ADDRESS2 ="0xe36cFd4fF3605E7f79d9CbDAe96935E50476643b"
-const CONTRACT_ADDRESS3 ="0x338fC0CAb671309dED6F5f6AeacF41e252dDc144"
+const CONTRACT_ADDRESS3 ="0x7B5E29d4334C1048080c29eaE06FbC67A0e7FAca"
 const CONTRACT_ABI = require('../constant/diabetes.json'); 
 const CONTRACT_ABI2 = require('../constant/heart.json');  
 const CONTRACT_ABI3 = require('../constant/lung.json');
@@ -541,24 +541,25 @@ routerB.post('/blockchain/store-lung', authenticateUser, async (req, res) => {
                   return res.status(400).json({ error: `Missing data field: ${field}` });
               }
           }
+          
 
           // Convert YES/NO fields to 1/0
           const Transaction = await contract3.storeLungCancerData(
-              parseInt(data.AGE),
-              convertToBinary(data.SMOKING),
-              convertToBinary(data.YELLOW_FINGERS),
-              convertToBinary(data.ANXIETY),
-              convertToBinary(data.PEER_PRESSURE),
-              convertToBinary(data.CHRONIC_DISEASE),
-              convertToBinary(data.FATIGUE),
-              convertToBinary(data.ALLERGY),
-              convertToBinary(data.WHEEZING),
-              convertToBinary(data.ALCOHOL_CONSUMING),
-              convertToBinary(data.COUGHING),
-              convertToBinary(data.SHORTNESS_OF_BREATH),
-              convertToBinary(data.SWALLOWING_DIFFICULTY),
-              convertToBinary(data.CHEST_PAIN),
-              data.prediction
+            parseInt(data.AGE),
+            parseInt(data.SMOKING),
+            parseInt(data.YELLOW_FINGERS),
+            parseInt(data.ANXIETY),
+            parseInt(data.PEER_PRESSURE),
+            parseInt(data.CHRONIC_DISEASE),
+            parseInt(data.FATIGUE),
+            parseInt(data.ALLERGY),
+            parseInt(data.WHEEZING),
+            parseInt(data.ALCOHOL_CONSUMING),
+            parseInt(data.COUGHING),
+            parseInt(data.SHORTNESS_OF_BREATH),
+            parseInt(data.SWALLOWING_DIFFICULTY),
+            parseInt(data.CHEST_PAIN),
+            parseInt(data.prediction)
           );
 
           console.log("Transaction sent! Waiting for confirmation...");
@@ -575,7 +576,23 @@ routerB.post('/blockchain/store-lung', authenticateUser, async (req, res) => {
 
       if (index > 0n) {
           const rawStoredData = await contract3.getLungCancerData(index - 1n);
-          storedData = Object.fromEntries(Object.entries(rawStoredData).map(([key, value]) => [key, value.toString()]));
+          storedData = {
+            AGE: rawStoredData.AGE.toString(),
+            SMOKING: rawStoredData.SMOKING.toString(),
+            YELLOW_FINGERS: rawStoredData.YELLOW_FINGERS.toString(),
+            ANXIETY: rawStoredData.ANXIETY.toString(),
+            PEER_PRESSURE: rawStoredData.PEER_PRESSURE.toString(),
+            CHRONIC_DISEASE: rawStoredData.CHRONIC_DISEASE.toString(),
+            FATIGUE: rawStoredData.FATIGUE.toString(),
+            ALLERGY: rawStoredData.ALLERGY.toString(),
+            WHEEZING: rawStoredData.WHEEZING.toString(),
+            ALCOHOL_CONSUMING: rawStoredData.ALCOHOL_CONSUMING.toString(),
+            COUGHING: rawStoredData.COUGHING.toString(),
+            SHORTNESS_OF_BREATH: rawStoredData.SHORTNESS_OF_BREATH.toString(),
+            SWALLOWING_DIFFICULTY: rawStoredData.SWALLOWING_DIFFICULTY.toString(),
+            CHEST_PAIN: rawStoredData.CHEST_PAIN.toString(),
+            prediction: rawStoredData.prediction.toString()
+        };
           console.log("Stored Data:", storedData);
           res.status(200).json({ message: 'Data stored successfully', storedData });
       } else {
@@ -596,35 +613,63 @@ routerB.get('/blockchain/lung/all-user-records', authenticateUser, async (req, r
           return res.status(404).json({ error: 'User not found' });
       }
 
-      const txHashes = user.lungTransactionHashes || [];
-      if (txHashes.length === 0) {
-          return res.status(200).json({ records: [] });
+      const txHashes = user.lungTransactionHashes;
+      if (!txHashes || txHashes.length === 0) {
+        return res.status(200).json({ records: [] });
       }
-
+  
+      // Process each transaction hash
       const records = await Promise.all(txHashes.map(async (txHash) => {
-          const receipt = await provider.getTransactionReceipt(txHash);
-          if (!receipt) return null;
-
-          let parsedLog;
-          for (const log of receipt.logs) {
-              try {
-                  parsedLog = contract3.interface.parseLog(log);
-                  if (parsedLog.event === "DataStored") break;
-              } catch (err) {
-                  continue;
-              }
+        // Fetch the transaction receipt
+        const receipt = await provider.getTransactionReceipt(txHash);
+        if (!receipt) return null;
+  
+        // Iterate over the logs and try to parse them using the contract's ABI
+        let parsedLog;
+        for (const log of receipt.logs) {
+          try {
+            parsedLog = contract3.interface.parseLog(log);
+            // Check if this log is for the DataStored event
+            if (parsedLog.event === "DataStored") {
+              break; // Found the matching log, exit the loop
+            }
+          } catch (err) {
+            // This log doesn't match the event signature; ignore it
+            continue;
           }
-          if (!parsedLog || !parsedLog.args) return null;
+        }
+        if (!parsedLog || !parsedLog.args) return null;
+  
+        // Access the record index (the first argument of the event)
+        const recordIndex = parsedLog.args[0];
+        console.log("Extracted record index:", recordIndex.toString());
+        if (recordIndex === undefined) return null;
 
-          const recordIndex = parsedLog.args[0];
-          if (recordIndex === undefined) return null;
+        const record = await contract3.getRecord(recordIndex);
+          return{
+            AGE: record.AGE.toString(),
+            SMOKING: record.SMOKING.toString(),
+            YELLOW_FINGERS: record.YELLOW_FINGERS.toString(),
+            ANXIETY: record.ANXIETY.toString(),
+            PEER_PRESSURE: record.PEER_PRESSURE.toString(),
+            CHRONIC_DISEASE: record.CHRONIC_DISEASE.toString(),
+            FATIGUE: record.FATIGUE.toString(),
+            ALLERGY: record.ALLERGY.toString(),
+            WHEEZING: record.WHEEZING.toString(),
+            ALCOHOL_CONSUMING: record.ALCOHOL_CONSUMING.toString(),
+            COUGHING: record.COUGHING.toString(),
+            SHORTNESS_OF_BREATH: record.SHORTNESS_OF_BREATH.toString(),
+            SWALLOWING_DIFFICULTY: record.SWALLOWING_DIFFICULTY.toString(),
+            CHEST_PAIN: record.CHEST_PAIN.toString(),
+            prediction: record.prediction.toString()
+          };
+          
+        }));
+    
+        // Filter out null results in case some txHashes didn't yield a valid record
+        const filteredRecords = records.filter(record => record !== null);
 
-          const record = await contract3.getRecord(recordIndex);
-
-          return Object.fromEntries(Object.entries(record).map(([key, value]) => [key, value.toString()]));
-      }));
-
-      res.status(200).json({ records: records.filter(Boolean) });
+      res.status(200).json({ records: filteredRecords });
   } catch (error) {
       console.error("Error fetching lung cancer user blockchain records:", error);
       res.status(500).json({ error: 'Failed to fetch user records' });
