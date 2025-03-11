@@ -154,7 +154,6 @@
                 loadingBar.style.width = '100%';
 
                 if (response.ok) {
-                    alert(result.message);
                     localStorage.setItem('accessToken', result.accessToken);
                     document.cookie = `refreshToken=${result.refreshToken}; path=/; secure`;
                     window.location.href = 'checkup.html';
