@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-backend
+  template:
+    metadata:
+      labels:
+        app: node-backend
+    spec:
+      containers:
+      - name: node-backend
+        image: anandst123/node-backend:latest
+        ports:
+        - containerPort: 3002
+        resources:
+         limits:
+          cpu: "1000m"
+          memory: "1024Mi"
+         requests:
+          cpu: "500m"
+          memory: "512Mi"
