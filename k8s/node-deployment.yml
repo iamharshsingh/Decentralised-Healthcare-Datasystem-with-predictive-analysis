@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: node-backend
@@ -19,8 +19,8 @@ spec:
         - containerPort: 3002
         resources:
          limits:
-          cpu: "1000m"
-          memory: "1024Mi"
+           memory: "512Mi"
+           cpu: "500m"
          requests:
-          cpu: "500m"
-          memory: "512Mi"
+            memory: "256Mi"
+            cpu: "250m"
