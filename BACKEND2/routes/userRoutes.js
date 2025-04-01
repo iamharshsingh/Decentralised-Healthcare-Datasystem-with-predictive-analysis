@@ -5,6 +5,7 @@ const User = require('../models/userSchema.js');
 const routerUser = express.Router();
 const multer = require('../middleware/multer.middleware');
 const upload = require('../middleware/multer.middleware.js')
+const authenticateUser = require("../middleware/authenticateUser")
 require('dotenv').config();
 const app = express();
 app.use(express.json());
@@ -23,7 +24,7 @@ routerUser.get('/user', (req, res) => {
 });
 
 // Register a new user
-routerUser.post('/user/register', async (req, res) => {
+routerUser.post('/user/register',authenticateUser, async (req, res) => {
     try {
         console.log('register route is working!');
         const { username, password } = req.body;
@@ -69,7 +70,7 @@ routerUser.post('/user/register', async (req, res) => {
 });
 
 //  Get all users
-routerUser.get('/user/allusers', async (req, res) => {
+routerUser.get('/user/allusers',authenticateUser, async (req, res) => {
     try {
         const users = await User.find({}, '-password'); // Exclude password field
         res.status(200).json(users);
@@ -80,7 +81,7 @@ routerUser.get('/user/allusers', async (req, res) => {
 });
 
 //  Get a specific user by ID
-routerUser.get('user/getuserbyid/:id', async (req, res) => {
+routerUser.get('user/getuserbyid/:id',authenticateUser, async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findById(id, '-password'); // Exclude password
@@ -103,7 +104,7 @@ const generateRefreshToken = (user) => {
     return jwt.sign({ id: user._id, username: user.username }, REFRESH_SECRET_KEY, { expiresIn: '7d' });
 };
 
-routerUser.post('/user/login', async (req, res) => {
+routerUser.post('/user/login',authenticateUser, async (req, res) => {
     try {
         console.log('Login route is working!');
         const { username, password } = req.body;
@@ -201,7 +202,7 @@ routerUser.post('/user/login', async (req, res) => {
 //     }
 // });
 
-routerUser.post('/user/refresh', async (req, res) => {
+routerUser.post('/user/refresh',authenticateUser, async (req, res) => {
     try {
         const refreshToken = req.cookies?.refreshToken;
 
@@ -263,7 +264,7 @@ routerUser.post('/user/refresh', async (req, res) => {
 // });
 
 
-routerUser.post('/user/upload', (req, res) => {
+routerUser.post('/user/upload',authenticateUser, (req, res) => {
     upload(req, res, (err) => {
         try {
             if (err) {

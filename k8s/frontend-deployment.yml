@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: html-css-js-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: html-css-js-server
+  template:
+    metadata:
+      labels:
+        app: html-css-js-server
+    spec:
+      containers:
+      - name: web
+        image: nginx:alpine
+        ports:
+          - containerPort: 80
+            hostPort: 8080   # Maps host port 8080 to container port 80
+        volumeMounts:
+          - name: public-volume
+            mountPath: /usr/share/nginx/html
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+      volumes:
+      - name: public-volume
+        hostPath:
+          path:  /home/docker  # Update this with the full path on your node
+          type: Directory
