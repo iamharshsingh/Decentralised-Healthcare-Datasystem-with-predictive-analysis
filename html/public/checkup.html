@@ -309,11 +309,11 @@
         const result = await response.json();
         console.log("Response from server:", result);
         if (formId === "lungForm"){
-            if(result.prediction === "YES"){
-                result.prediction = 1;
+            if(result.LUNG_CANCER === "YES"){
+                result.LUNG_CANCER = 1;
             }
             else{
-                result.prediction = 0;
+                result.LUNG_CANCER = 0;
             }
         }
         if (result.prediction !== undefined) {
