@@ -663,28 +663,29 @@
       }
     }
 
-    // Functions to fetch blockchain records for each disease
-    async function fetchAllUserDiabetesRecords() {
-      disableButton('fetchAllUserDiabetesButton');
-      document.getElementById('diabetesLoadingIndicator').style.display = 'block';
-      try {
-        const response = await fetch('https://render-9r49.onrender.com/api/blockchain/diabetes/all-user-records', {
-          headers: {
-            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+        async function fetchAllUserDiabetesRecords() {
+          disableButton('fetchAllUserDiabetesButton');
+          document.getElementById('diabetesLoadingIndicator').style.display = 'block';
+          try {
+            const response = await fetch('https://render-9r49.onrender.com/api/blockchain/diabetes/all-user-records', {
+              headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+              }
+            });
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            displayRecords(data.records);
+          } catch (error) {
+            console.error('Error fetching user diabetes records:', error);
+          } finally {
+            enableButton('fetchAllUserDiabetesButton');
+            document.getElementById('diabetesLoadingIndicator').style.display = 'none';
           }
-        });
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        displayRecords(data.records);
-      } catch (error) {
-        console.error('Error fetching user diabetes records:', error);
-      } finally {
-        enableButton('fetchAllUserDiabetesButton');
-        document.getElementById('diabetesLoadingIndicator').style.display = 'none';
-      }
-    }
+        }  
+
+    
 
     async function fetchAllUserHeartRecords() {
       disableButton('fetchAllUserHeartButton');

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Healthcare Prediction System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8fdff;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            color: #4B5563;      
+        }
+
+        .nav-links a:hover{
+            color: #2563EB; 
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2196F3;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0d47a1, #2196F3);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .about-section {
+            max-width: 1200px;
+            margin: -4rem auto 0;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .team-icon {
+            width: 120px;
+            height: 120px;
+            background: #e3f2fd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .team-icon i {
+            font-size: 3rem;
+            color: #0d47a1;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-card h3 {
+            color: #0d47a1;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .content-card p {
+            color: #546e7a;
+        }
+
+        .content-icon {
+            color: #2196F3;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .vision-section {
+            background: linear-gradient(135deg, #f8fdff, #ffffff);
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .vision-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .vision-content h2 {
+            color: #0d47a1;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .vision-content p {
+            color: #546e7a;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer {
+            background: #0d47a1;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo img {
+            height: 3rem; 
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="LOGO.png" alt="AIHealthCare Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html" >Home</a>
+                <a href="#" >Disease Prediction</a>
+                <a href="how it works.html" >How It Works</a>
+                <a href="#">About Us</a>
+                <a href="#" >Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header">
+        <h1>About Our Team</h1>
+        <p>Meet the minds behind the healthcare prediction system</p>
+    </header>
+
+    <section class="about-section">
+        <div class="team-card">
+            <div class="team-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h2>Who We Are</h2>
+            <p>We are a team of four third-year college students passionate about leveraging technology to enhance healthcare data systems. Our diverse skills and shared vision drive us to innovate in the healthcare technology space.</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-card">
+                <div class="content-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p>To explore the potential of predictive analytics in healthcare, providing data-driven insights that improve efficiency and patient outcomes.</p>
+            </div>
+
+            <div class="content-card">
+                <div class="content-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>What Our System Does</h3>
+                <p>Our project focuses on developing a predictive healthcare data system that processes medical data to identify trends, optimize resources, and support healthcare decision-making.</p>
+            </div>
+
+            <div class="content-card">
+                <div class="content-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Why It Matters</h3>
+                <p>Predictive analytics is revolutionizing healthcare by enabling early diagnosis, risk assessment, and streamlined hospital operations. Our project showcases the potential of such technologies.</p>
+            </div>
+
+            <div class="content-card">
+                <div class="content-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Our Approach</h3>
+                <p>We utilize data science techniques, machine learning models, and secure data handling practices to ensure reliability and effectiveness.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-section">
+        <div class="vision-content">
+            <h2>Our Vision</h2>
+            <p>While this is a minor project, we aim to build a foundational model that could inspire further research and practical applications in healthcare prediction systems. We believe in the power of technology to transform healthcare delivery and improve patient outcomes.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About HealthPredict</h3>
+                <p>Leading the way in AI-powered healthcare prediction and analysis for better health outcomes.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p>Home</p>
+                <p>About Us</p>
+                <p>How It Works</p>
+                <p>Contact</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@healthpredict.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 HealthPredict. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
