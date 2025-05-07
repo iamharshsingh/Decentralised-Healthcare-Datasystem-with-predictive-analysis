@@ -1,0 +1,725 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodPressure",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "specificGravity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "albumin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sugar",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "redBloodCells",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pusCell",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pusCellClumps",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bacteria",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodGlucoseRandom",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodUrea",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "serumCreatinine",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sodium",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "potassium",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "haemoglobin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "packedCellVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "whiteBloodCellCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "redBloodCellCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "hypertension",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "diabetesMellitus",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "coronaryArteryDisease",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "appetite",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pedaEdema",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aanemia",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prediction",
+						"type": "uint256"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct ChronicKidneyStorage.CKDData",
+				"name": "data",
+				"type": "tuple"
+			}
+		],
+		"name": "DataStored",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_bloodPressure",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_specificGravity",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_albumin",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_sugar",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_redBloodCells",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_pusCell",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_pusCellClumps",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_bacteria",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_bloodGlucoseRandom",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_bloodUrea",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_serumCreatinine",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_sodium",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_potassium",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_haemoglobin",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_packedCellVolume",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_whiteBloodCellCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_redBloodCellCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_hypertension",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_diabetesMellitus",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_coronaryArteryDisease",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_appetite",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_pedaEdema",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_aanemia",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_prediction",
+				"type": "uint256"
+			}
+		],
+		"name": "storeCKDData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getCKDData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodPressure",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "specificGravity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "albumin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sugar",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "redBloodCells",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pusCell",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pusCellClumps",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bacteria",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodGlucoseRandom",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodUrea",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "serumCreatinine",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sodium",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "potassium",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "haemoglobin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "packedCellVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "whiteBloodCellCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "redBloodCellCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "hypertension",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "diabetesMellitus",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "coronaryArteryDisease",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "appetite",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pedaEdema",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aanemia",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prediction",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ChronicKidneyStorage.CKDData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getRecord",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodPressure",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "specificGravity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "albumin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sugar",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "redBloodCells",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pusCell",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pusCellClumps",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bacteria",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodGlucoseRandom",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bloodUrea",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "serumCreatinine",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sodium",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "potassium",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "haemoglobin",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "packedCellVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "whiteBloodCellCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "redBloodCellCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "hypertension",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "diabetesMellitus",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "coronaryArteryDisease",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "appetite",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pedaEdema",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aanemia",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prediction",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct ChronicKidneyStorage.CKDData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getRecordCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "records",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "bloodPressure",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "specificGravity",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "albumin",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "sugar",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "redBloodCells",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "pusCell",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "pusCellClumps",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "bacteria",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "bloodGlucoseRandom",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "bloodUrea",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "serumCreatinine",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "sodium",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "potassium",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "haemoglobin",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "packedCellVolume",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "whiteBloodCellCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "redBloodCellCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "hypertension",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "diabetesMellitus",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "coronaryArteryDisease",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "appetite",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "pedaEdema",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "aanemia",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "prediction",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

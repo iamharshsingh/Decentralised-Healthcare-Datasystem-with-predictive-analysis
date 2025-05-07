@@ -17,7 +17,8 @@ const userSchema = new Schema({
   },
   diabetesTransactionHashes: [{ type: String }],
   heartTransactionHashes: [{ type: String }],
-  lungTransactionHashes: [{ type: String }]
+  lungTransactionHashes: [{ type: String }],
+  ckdTransactionHashes: [{ type: String }]
 });
 
 const User = model('User', userSchema);

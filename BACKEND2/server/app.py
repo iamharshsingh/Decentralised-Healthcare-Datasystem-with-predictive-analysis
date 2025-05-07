@@ -27,7 +27,7 @@ with open(diabetes_model_path, 'rb') as f:
 
 print("Model Details:", diabetes_model)
 print("Model's feature names:", diabetes_model.feature_names_in_)
-print("Model's coefficients:", diabetes_model.coef_)
+# print("Model's coefficients:", diabetes_model.coef_)
 
 @app.route('/predict/diabetes', methods=['POST'])
 def predict_diabetes():
@@ -91,7 +91,8 @@ with open(heart_model_path, 'rb') as f:
     
 print("Model Details:", heart_model)
 print("Model's feature names:", heart_model.feature_names_in_)
-print("Model's coefficients:", heart_model.coef_)
+# print("Model's coefficients:", heart_model.coef_)
+
 #  endpoint='predict/heart'
 @app.route('/predict/heart', methods=['POST'])
 def predict_heart():
@@ -143,7 +144,7 @@ with open(lungCancer_model_path, 'rb') as f:
     
 print("Model Details:", lungCancer_model)
 print("Model's feature names:", lungCancer_model.feature_names_in_)
-print("Model's coefficients:", lungCancer_model.coef_)
+# print("Model's coefficients:", lungCancer_model.coef_)
 
 @app.route('/predict/lung', methods=['POST'])
 def predict_lung_cancer():
@@ -172,6 +173,42 @@ def predict_lung_cancer():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+ 
+chronic_model_path = os.path.join(os.path.dirname(__file__), 'chronic_disease_kidney_model.pkl')
+
+# Load the ML model
+with open(chronic_model_path, 'rb') as f:
+    chronic_model = pickle.load(f)
+
+print("Model Details:", chronic_model)
+print("Model's feature names:", chronic_model.feature_names_in_)
+# print("Model's coefficients:", chronic_model.coef_) 
+
+@app.route('/predict/chronic', methods=['POST'])
+def predict_chronic_disease():
+    try:
+        data = request.json
+        print("Received data:", data)
+
+        # Dynamically extract features in the order the model expects
+        feature_names = chronic_model.feature_names_in_
+        features = [data[name] for name in feature_names]
+
+        # Build DataFrame and make prediction
+        features_df = pd.DataFrame([features], columns=feature_names)
+        prediction = chronic_model.predict(features_df)
+
+        # Map numeric prediction to Yes/No (adjust labels if needed)
+        result = {
+            'CHRONIC_DISEASE': "YES" if prediction[0] == 1 else "NO"
+        }
+        return jsonify(result)
+
+    except KeyError as ke:
+        return jsonify({'error': f"Missing feature in request: {ke}"}), 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
     
 # if __name__ == '__main__':
 #    port = int(os.environ.get("PORT", 10000))  # Render provides a PORT variable

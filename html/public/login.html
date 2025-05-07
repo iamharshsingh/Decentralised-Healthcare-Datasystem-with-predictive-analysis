@@ -12,11 +12,20 @@
   padding: 0;
 }
 
-/* Global Body Styles */
 body {
+  background-image:
+    radial-gradient(circle, #4f93ce 1px, transparent 0),
+    linear-gradient(135deg, #1f1f1f, #3a3a3a);
+
+  /* Repeat only the dots; gradient covers entire box */
+  background-repeat: repeat, no-repeat;
+
+  /* Tile the dots every 20px, make gradient cover */
+  background-size: 20px 20px, cover;
+
+  /* Optional positioning (default is 0 0 for both) */
+  background-position: 0 0, center;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
-  color: #fff;
   line-height: 1.6;
   padding: 20px;
   display: flex;
@@ -135,10 +144,19 @@ button.sign:hover {
 <body >
   <div class="loading-container">
     <div id="loading-bar"></div>
-</div>
+ </div>
+<div class="
+flex flex-col items-center justify-center
+bg-fixed 
+bg-[image:radial-gradient(circle,#4f93ce_1px,transparent_0),linear-gradient(135deg,#1f1f1f,#3a3a3a)]
+bg-[repeat:repeat,no-repeat]
+bg-[size:20px_20px,cover]
+bg-[position:0px_0px,center]
+">
+
 
 <div id="loginForm" class="form-container">
-    <p class="title">Login</p>
+  <img src="LOGO.png" alt="AIHealthCare Logo" class="h-12 w-15 mb-[25px] ml-[25px]">
     <form class="loginForm">
         <div class="input-group">
             <label class="names" for="username">Username</label>
@@ -150,8 +168,9 @@ button.sign:hover {
         </div>
         <button type="submit" class="sign" id="fetchBtn">Login</button>
     </form>
-</div>
-    <script>
+  </div>
+ </div>
+    <script src="https://cdn.tailwindcss.com">
         const fetchBtn = document.getElementById('fetchBtn');
         const loadingBar = document.getElementById('loading-bar');
 
