@@ -558,7 +558,7 @@
         loadingIndicatorId = "lungLoadingIndicator";
       } else if (formType === "ckd") {
         form = document.getElementById("ckdFormData");
-        apiUrl = "http://127.0.0.1:5000/predict/chronic";
+        apiUrl = "https://render-1-yyer.onrender.com/predict/chronic";
         loadingIndicatorId = "ckdLoadingIndicator";
       } else {
         alert("Invalid form type");
@@ -799,7 +799,7 @@
         } else if (formType === "Lung") {
           blockchainUrl = "https://render-9r49.onrender.com/api/blockchain/store-lung";
         } else if (formType === "ckd") {
-          blockchainUrl = "http://localhost:3002/api/blockchain/store-ckd";
+          blockchainUrl = "https://render-9r49.onrender.com/api/blockchain/store-ckd";
         }
         const blockchainResponse = await fetch(blockchainUrl, {
           method: 'POST',
