@@ -9,7 +9,6 @@ from Chatbot_agent import graphd
 
 app = Flask(__name__)
 CORS(app) 
-# supports_credentials=True , origins=["https://render-2.vercel.app","http://localhost:3000"])
 
 
 @app.route('/predict/heart', methods=['OPTIONS'])
@@ -210,8 +209,9 @@ def predict_chronic_disease():
         return jsonify({'error': f"Missing feature in request: {ke}"}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-@app.route('/api/chat/heart', methods=['POST'])
+
+@app.route('/api/chat/heart', methods=['OPTIONS'])    
+# @app.route('/api/chat/heart', methods=['POST'])
 def chat_heart():
     # Parse the incoming JSON
     data = request.get_json(force=True)
@@ -227,7 +227,8 @@ def chat_heart():
         # Log error (omitted here) and return a generic error message
         return jsonify({ 'error': 'Internal server error' }), 500
 
-@app.route('/api/chat/diabetes', methods=['POST'])
+@app.route('/api/chat/diabetes', methods=['OPTIONS'])
+# @app.route('/api/chat/diabetes', methods=['POST'])
 def chat_diabetes():
     # Parse the incoming JSON
     data = request.get_json(force=True)
