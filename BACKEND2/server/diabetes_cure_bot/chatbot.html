@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assistant Widget</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+
+    /* Chat icon button */
+    #chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #007bff;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+    #chat-toggle:hover { background: #0056b3; }
+
+    /* Button panel container */
+    #chat-panel {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      display: none;
+      z-index: 999;
+    }
+
+    /* Each option button */
+    .chat-option {
+      display: block;
+      width: 200px;
+      padding: 12px;
+      border: none;
+      background: #f1f1f1;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+    }
+    .chat-option:hover { background: #e2e2e2; }
+
+    /* Response display box */
+    #chat-response {
+      position: fixed;
+      bottom: 90px;
+      right: 230px;
+      width: 250px;
+      max-height: 200px;
+      overflow-y: auto;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 998;
+    }
+
+    .response-message {
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .response-message:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Chat Icon -->
+  <div id="chat-toggle">💬</div>
+
+  <!-- Panel with five buttons -->
+  <div id="chat-panel">
+    <button class="chat-option" data-value="Medicine">Medicine</button>
+    <button class="chat-option" data-value="Exercise">Exercise</button>
+    <button class="chat-option" data-value="Home Cure">Home Cure</button>
+    <button class="chat-option" data-value="Diet">Diet</button>
+    <button class="chat-option" data-value="Doctor Type">Doctor Type</button>
+  </div>
+
+  <!-- Response display -->
+  <div id="chat-response"></div>
+
+  <script>
+    const toggle = document.getElementById('chat-toggle');
+    const panel = document.getElementById('chat-panel');
+    const responseBox = document.getElementById('chat-response');
+
+    // Toggle panel and response visibility
+    toggle.addEventListener('click', () => {
+      const isPanelOpen = panel.style.display === 'block';
+      if (isPanelOpen) {
+        panel.style.display = 'none';
+        responseBox.style.display = 'none';
+      } else {
+        panel.style.display = 'block';
+      }
+    });
+
+    // Display response messages
+    function showResponse(text) {
+      responseBox.style.display = 'block';
+      const msg = document.createElement('div');
+      msg.className = 'response-message';
+      msg.textContent = text;
+      responseBox.appendChild(msg);
+      responseBox.scrollTop = responseBox.scrollHeight;
+    }
+
+    // Handle option clicks: send to backend
+    panel.addEventListener('click', async (e) => {
+      if (!e.target.classList.contains('chat-option')) return;
+      const value = e.target.dataset.value;
+
+      try {
+        const res = await fetch('http://localhost:5000/api/chat/diabetes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ input: value })
+        });
+        const data = await res.json();
+        showResponse(data.response || data.error);
+      } catch (err) {
+        console.error(err);
+        showResponse('Error contacting assistant.');
+      }
+    });
+  </script>
+
+</body>
+</html>
