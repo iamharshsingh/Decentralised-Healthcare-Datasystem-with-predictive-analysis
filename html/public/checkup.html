@@ -942,7 +942,7 @@
       const value = e.target.dataset.value;
       const endpoint = e.target.dataset.endpoint;
       try {
-        const res = await fetch(`http://localhost:5000${endpoint}`, {
+        const res = await fetch(`https://render-1-yyer.onrender.com${endpoint}`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ input: value })
         });
         const data = await res.json();
