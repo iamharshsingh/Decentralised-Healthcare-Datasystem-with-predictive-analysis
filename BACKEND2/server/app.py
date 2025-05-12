@@ -8,7 +8,6 @@ from Chatbot import graphh
 from Chatbot_agent import graphd
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route('/predict/heart', methods=['OPTIONS'])
@@ -249,7 +248,7 @@ def chat_diabetes():
 #    app.run(host='0.0.0.0', port=port)
 
 
-
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
