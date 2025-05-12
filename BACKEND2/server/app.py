@@ -8,11 +8,21 @@ from Chatbot import graphh
 from Chatbot_agent import graphd
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/predict/heart', methods=['OPTIONS'])
 def options():
     return jsonify({'status': 'ok'})
+
+@app.route('/api/chat/diabetes', methods=['OPTIONS'])
+def chat_diabetes_options():
+    # Flask-CORS will wrap this and add the
+    # Access-Control-Allow-Origin, -Methods, -Headers
+    return jsonify({}), 200
+
+@app.route('/api/chat/heart', methods=['OPTIONS'])
+def chat_heart_options():
+    return jsonify({}), 200
 
 
 @app.route('/')
@@ -247,8 +257,6 @@ def chat_diabetes():
 #    port = int(os.environ.get("PORT", 10000))  # Render provides a PORT variable
 #    app.run(host='0.0.0.0', port=port)
 
-
-CORS(app, resources={r"/api/*": {"origins": "*"}})
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
