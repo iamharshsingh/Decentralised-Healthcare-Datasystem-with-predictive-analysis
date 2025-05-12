@@ -8,7 +8,7 @@ from Chatbot import graphh
 from Chatbot_agent import graphd
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
 
 @app.route('/predict/heart', methods=['OPTIONS'])
 def options():
