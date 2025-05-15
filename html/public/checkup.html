@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
-      background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
-      color: #fff;
+      background: #e3f2fd;
+      color: #e3f2fd;
       display: flex;
       margin: 0;
       font-family: Arial, sans-serif;
@@ -17,16 +17,20 @@
 
     .sidebar {
       width: 200px;
-      background: linear-gradient(135deg, #4f93ce, #285f8f);
+      background: #a2d2ff;
       color: #fff;
       padding: 20px;
       min-height: 100vh;
+      border-radius: 6px;
       transition: background 0.3s ease;
     }
 
     .sidebar h2 {
       margin-top: 0;
       text-align: center;
+      color: #2c3e50;
+      font-size: 30px;
+      font-family: 'Times New Roman', Times, serif;
     }
 
     .sidebar ul {
@@ -52,13 +56,13 @@
 
     .main-content {
       flex-grow: 1;
-      padding: 20px;
+      padding-left: 20px;
     }
 
     .form-section {
       display: none;
       margin-bottom: 40px;
-      background-color: #fff;
+      background-color: #90e0ef;
       border: 1px solid #ddd;
       padding: 20px;
       border-radius: 4px;
@@ -82,7 +86,7 @@
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
-      color: #333;
+      color: #5e60ce;
     }
 
     .small-input {
@@ -91,17 +95,8 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       box-sizing: border-box;
-      background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
-      color: #fff;
-    }
-
-    .form-group input[type="number"],
-    .form-group input[type="text"],
-    .form-group select {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+      background: #5b21d7;
+      color: #a7ae1a;
     }
 
     .form-group button {
@@ -212,18 +207,24 @@
     .response-message:last-child {
       margin-bottom: 0;
     }
+
+    .header{
+      font-size: 30px;
+      font-family: 'Times New Roman', Times, serif;
+      color: #16a085;
+    }
   </style>
 </head>
 
 <body>
   <!-- Side Navbar -->
   <div class="sidebar">
-    <h2 ">Diseases</h2>
+    <h2>Diseases</h2>
     <ul>
       <li onclick=" showForm('diabetesForm')">Diabetes</li>
       <li onclick="showForm('heartForm')">Heart</li>
       <li onclick="showForm('lungForm')">Lung Cancer</li>
-      <li onclick="showForm('ckdForm')">Chronic Kidney Disease</li>
+      <li onclick="showForm('ckdForm')">Chronic Kidney </li>
       </ul>
   </div>
 
@@ -231,7 +232,7 @@
   <div class="main-content">
     <!-- Diabetes Form -->
     <section id="diabetesForm" class="form-section active">
-      <h1>Diabetes Metrics</h1>
+      <div class="header"><h1>Diabetes</h1></div>
       <!-- Note: form id for submission is "basicForm" -->
       <form id="diabetesFormData">
         <div class="form-group">
@@ -282,7 +283,7 @@
 
     <!-- Heart Form -->
     <section id="heartForm" class="form-section">
-      <h1>Heart Metrics</h1>
+      <div class="header"><h1>Heart</h1></div>
       <!-- Note: form id for submission is "fullForm" -->
       <form id="heartFormData">
         <div class="form-group">
@@ -352,99 +353,99 @@
 
     <!-- Lung Cancer Form -->
     <section id="lungForm" class="form-section">
-      <h1>Lung Cancer Metrics</h1>
+      <div class="header"><h1>Lung Cancer</h1></div>
       <!-- Note: form id for submission is "lungFormData" -->
       <form id="lungFormData">
         <div class="form-group">
-          <label for="AGE">AGE</label>
+          <label for="AGE">Age </label>
           <input type="number" id="AGE" name="AGE" value="0" class="small-input" />
         </div>
         <div class="form-group">
-          <label for="SMOKING">SMOKING</label>
+          <label for="SMOKING">Smoking</label>
           <select id="SMOKING" name="SMOKING" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="YELLOW_FINGERS">YELLOW FINGERS</label>
+          <label for="YELLOW_FINGERS">Yellow fingers</label>
           <select id="YELLOW_FINGERS" name="YELLOW_FINGERS" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="ANXIETY">ANXIETY</label>
+          <label for="ANXIETY">Anxiety</label>
           <select id="ANXIETY" name="ANXIETY" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="PEER_PRESSURE">PEER PRESSURE</label>
+          <label for="PEER_PRESSURE">Peer Pressure</label>
           <select id="PEER_PRESSURE" name="PEER_PRESSURE" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="CHRONIC_DISEASE">CHRONIC DISEASE</label>
+          <label for="CHRONIC_DISEASE">Chronic disease</label>
           <select id="CHRONIC_DISEASE" name="CHRONIC_DISEASE" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="FATIGUE">FATIGUE</label>
+          <label for="FATIGUE">Fatigue</label>
           <select id="FATIGUE" name="FATIGUE" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="ALLERGY">ALLERGY</label>
+          <label for="ALLERGY">Allergy</label>
           <select id="ALLERGY" name="ALLERGY" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="WHEEZING">WHEEZING</label>
+          <label for="WHEEZING">Wheezing</label>
           <select id="WHEEZING" name="WHEEZING" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="ALCOHOL_CONSUMING">ALCOHOL CONSUMING</label>
+          <label for="ALCOHOL_CONSUMING">Alcohol Consuming</label>
           <select id="ALCOHOL_CONSUMING" name="ALCOHOL_CONSUMING" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="COUGHING">COUGHING</label>
+          <label for="COUGHING">Couching</label>
           <select id="COUGHING" name="COUGHING" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="SHORTNESS_OF_BREATH">SHORTNESS OF BREATH</label>
+          <label for="SHORTNESS_OF_BREATH">Shortness of breath</label>
           <select id="SHORTNESS_OF_BREATH" name="SHORTNESS_OF_BREATH" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="SWALLOWING_DIFFICULTY">SWALLOWING DIFFICULTY</label>
+          <label for="SWALLOWING_DIFFICULTY">Swallowing difficulty</label>
           <select id="SWALLOWING_DIFFICULTY" name="SWALLOWING_DIFFICULTY" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="CHEST_PAIN">CHEST PAIN</label>
+          <label for="CHEST_PAIN">Cheast Pain</label>
           <select id="CHEST_PAIN" name="CHEST_PAIN" class="small-input">
             <option value="NO" selected>No</option>
             <option value="YES">Yes</option>
@@ -465,7 +466,7 @@
 
     <!-- Chronic Kidney Disease Form -->
     <section id="ckdForm" class="form-section">
-      <h1>Chronic Kidney Disease Metrics</h1>
+      <div class="header"><h1>Chronic Kidney</h1></div>
       <form id="ckdFormData">
         <!-- Numeric inputs -->
         <div class="form-group">
@@ -608,11 +609,11 @@
   <!-- JavaScript Functionality -->
   <script>
     // Check if the access token exists
-     const token = localStorage.getItem("accessToken");
-    if (!token) {
-      alert("You must log in first!");
-      window.location.href = "login.html";
-    }
+    // const token = localStorage.getItem("accessToken");
+   // if (!token) {
+    //  alert("You must log in first!");
+    //  window.location.href = "login.html";
+   // }
 
     let lastSubmittedData = null;
     let isSubmitting = false;
@@ -989,7 +990,7 @@
 
     // 4) Send the request
     const option = e.target.dataset.value;
-    const url    = `https://render-1-yyer.onrender.com/api/chat/${disease}`;
+    const url    = `http://localhost:5000/api/chat/${disease}`;
     try {
       const res = await fetch(url, {
         method:  'POST',

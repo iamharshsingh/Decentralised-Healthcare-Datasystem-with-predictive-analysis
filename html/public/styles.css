@@ -1,4 +1,4 @@
-
+/* 
 /* Global Reset */
 * {
     box-sizing: border-box;
@@ -54,16 +54,6 @@
     color: #ccc;
   }
   
-  .form-groups input[type="number"],
-  .form-groups input[type="text"],
-  .form-groups select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background-color: #444;
-    color: #fff;
-  }
 
     /* Form Groups */
     .form-group {
@@ -77,18 +67,17 @@
       color: #ccc;
     }
     
-    .form-group input[type="number"],
+     .form-group input[type="number"],
     .form-group input[type="text"],
     .form-group select {
       width: 30%;
       padding: 10px;
       border: 1px solid #555;
       border-radius: 4px;
-      background-color: #444;
-      color: #fff;
-    }
+      background-color: #e3f2fd;
+      color: #555;
+    } 
   
-  /* Buttons */
   button {
     padding: 10px 20px;
     border: none;
@@ -103,8 +92,7 @@
   button:hover {
     background: linear-gradient(135deg, #285f8f, #4f93ce);
   }
-  
-  /* Fetch Container */
+   
   .fetch-container {
     display: flex;
     align-items: center;
@@ -121,7 +109,6 @@
     animation: spin 1s linear infinite;
   }
   
-  /* Record Display */
   .record-display {
     background-color: #1f1f1f;
     padding: 15px;
@@ -133,7 +120,6 @@
     margin-top: 20px;
   }
   
-  /* Loading Container */
   .loading-container {
     text-align: center;
     background-color: #333;
@@ -142,7 +128,6 @@
     margin-top: 20px;
   }
   
-  /* Prediction Result */
   .prediction-result {
     background-color: #3a3a3a;
     padding: 20px;
@@ -152,12 +137,10 @@
     margin-top: 30px;
   }
   
-  /* Hidden Class */
   .hidden {
     display: none;
   }
   
-  /* Spinner Animation */
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -195,4 +178,4 @@
 }
 .record-display th {
   background-color: #1f1f1f;
-}
+} 
