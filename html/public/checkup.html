@@ -609,11 +609,11 @@
   <!-- JavaScript Functionality -->
   <script>
     // Check if the access token exists
-    // const token = localStorage.getItem("accessToken");
-   // if (!token) {
-    //  alert("You must log in first!");
-    //  window.location.href = "login.html";
-   // }
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      alert("You must log in first!");
+      window.location.href = "login.html";
+   }
 
     let lastSubmittedData = null;
     let isSubmitting = false;
@@ -990,7 +990,7 @@
 
     // 4) Send the request
     const option = e.target.dataset.value;
-    const url    = `http://localhost:5000/api/chat/${disease}`;
+    const url    = `https://render-1-yyer.onrender.com/api/chat/${disease}`;
     try {
       const res = await fetch(url, {
         method:  'POST',
