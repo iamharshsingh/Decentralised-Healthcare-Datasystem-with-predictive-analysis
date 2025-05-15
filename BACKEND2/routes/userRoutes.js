@@ -168,7 +168,7 @@ routerUser.post('/user/refresh',authenticateUser, async (req, res) => {
             const newAccessToken = generateAccessToken(user);
 
             // Optionally, refresh the refresh token if it’s close to expiry
-            const newRefreshToken = generateRefreshToken(user);
+            const newRefreshToken = generateRefreshToken(user);         
             res.cookie('refreshToken', newRefreshToken, { httpOnly: true, secure: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
 
             res.status(200).json({ accessToken: newAccessToken });

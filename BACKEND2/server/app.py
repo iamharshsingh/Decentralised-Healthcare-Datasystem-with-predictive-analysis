@@ -6,6 +6,7 @@ import pandas as pd
 from flask_cors import CORS
 from Chatbot import graphh
 from Chatbot_agent import graphd
+from Chatbot_Lung import graphl
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
@@ -218,6 +219,20 @@ def predict_chronic_disease():
         return jsonify({'error': f"Missing feature in request: {ke}"}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/api/chat/lung', methods=['POST'])
+def chat_lung():
+    data = request.get_json(force=True)
+    user_input = data.get('input', '').strip()
+    if not user_input:
+        return jsonify({ 'error': 'Missing `input` in request body' }), 400
+
+    try:
+        result = graphl.invoke({ 'input': user_input })
+        return jsonify({ 'response': result.get('response', '') })
+    except Exception as e:
+        # Optionally log e here
+        return jsonify({ 'error': 'Internal server error' }), 500
 
     
 @app.route('/api/chat/heart', methods=['POST'])
