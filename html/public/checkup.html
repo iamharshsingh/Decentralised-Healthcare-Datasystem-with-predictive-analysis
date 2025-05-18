@@ -609,11 +609,11 @@
   <!-- JavaScript Functionality -->
   <script>
     // Check if the access token exists
- //   const token = localStorage.getItem("accessToken");
- //   if (!token) {
- //     alert("You must log in first!");
- //     window.location.href = "login.html";
- //  }
+   const token = localStorage.getItem("accessToken");
+    if (!token) {
+     alert("You must log in first!");
+      window.location.href = "login.html";
+   }
 
     let lastSubmittedData = null;
     let isSubmitting = false;
