@@ -609,11 +609,11 @@
   <!-- JavaScript Functionality -->
   <script>
     // Check if the access token exists
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      alert("You must log in first!");
-      window.location.href = "login.html";
-   }
+ //   const token = localStorage.getItem("accessToken");
+ //   if (!token) {
+ //     alert("You must log in first!");
+ //     window.location.href = "login.html";
+ //  }
 
     let lastSubmittedData = null;
     let isSubmitting = false;
@@ -916,99 +916,123 @@
       }
     }
 
-    // Chat functionality
-  const toggle      = document.getElementById('chat-toggle');
-  const panel       = document.getElementById('chat-panel');
-  const responseBox = document.getElementById('chat-response');
+    const BASE_URL = 'https://render-1-yyer.onrender.com';
 
-  // Track last section for form‐specific clearing
-  let lastSection = null;
-
-  // Toggle panel & hide responses on close
-  toggle.addEventListener('click', () => {
-    const open = panel.style.display === 'block';
-    panel.style.display       = open ? 'none' : 'block';
-    responseBox.style.display = open ? 'none' : responseBox.style.display;
-    if (!open) {
-      // If opening, clear old messages
-      responseBox.innerHTML = '';
-    }
-  });
-
-  function formatResponse(raw) {
-    // 1) strip **bold**
-    let s = raw.replace(/\*\*(.*?)\*\*/g, '$1');
-    // 2) Break before any dash-list (colon-dash or plain dash)
-    s = s
-      .replace(/:\s*-\s*/g, ':\n- ')   // after “Options: - ”
-      .replace(/\s*-\s*/g, '\n- ')     // any other “ - ”
-      .trim();
-    return s;
-  }
-
-  // Display a single “bubble” message
-  function showResponse(text) {
-    const clean = formatResponse(text);
-    const msg   = document.createElement('div');
-    msg.className   = 'response-message';
-    msg.textContent = clean;
-    responseBox.appendChild(msg);
-    responseBox.style.display = 'block';
-  }
-
-  // Map your form-section IDs to endpoint suffixes
-  const diseaseMap = {
-    diabetesForm: 'diabetes',
-    heartForm:    'heart',
-    lungForm:     'lung',
-    ckdForm:      'ckd'
-  };
-
-  panel.addEventListener('click', async (e) => {
-    if (!e.target.classList.contains('chat-option')) return;
-
-    // 1) Clear out any existing bubble immediately
-    responseBox.innerHTML     = '';
-    responseBox.style.display = 'block';
-
-    // 2) Determine which disease form is active
-    const active = document.querySelector('.form-section.active');
-    if (!active) {
-      return showResponse('⚠️ No active form found.');
-    }
-    const secId   = active.id;
-    const disease = diseaseMap[secId];
-    if (!disease) {
-      return showResponse(`⚠️ Unknown section "${secId}"`);
-    }
-
-    // 3) If we've just switched forms, ensure a clean slate
-    if (lastSection !== secId) {
-      responseBox.innerHTML = '';
-      lastSection = secId;
-    }
-
-    // 4) Send the request
-    const option = e.target.dataset.value;
-    const url    = `https://render-1-yyer.onrender.com/api/chat/${disease}`;
-    try {
-      const res = await fetch(url, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ input: option })
-      });
-      if (!res.ok) {
-        const errTxt = await res.text();
-        throw new Error(`${res.status} ${errTxt}`);
+      // 1) Define the button sets for each disease form
+      const panelConfig = {
+        diabetesForm: [
+          { label: 'Medicine',    endpoint: `${BASE_URL}/api/chat/diabetes` },
+          { label: 'Exercise',    endpoint: `${BASE_URL}/api/chat/diabetes` },
+          { label: 'Home Cure',   endpoint: `${BASE_URL}/api/chat/diabetes` },
+          { label: 'Diet',        endpoint: `${BASE_URL}/api/chat/diabetes` },
+          { label: 'Doctor Type', endpoint: `${BASE_URL}/api/chat/diabetes` }
+        ],
+        heartForm: [
+          { label: 'Medicine',    endpoint: `${BASE_URL}/api/chat/heart` },
+          { label: 'Exercise',    endpoint: `${BASE_URL}/api/chat/heart` },
+          { label: 'Home Cure',   endpoint: `${BASE_URL}/api/chat/heart` },
+          { label: 'Diet',        endpoint: `${BASE_URL}/api/chat/heart` },
+          { label: 'Doctor Type', endpoint: `${BASE_URL}/api/chat/heart` }
+        ],
+        lungForm: [
+          { label: 'Medicine',    endpoint: `${BASE_URL}/api/chat/lung` },
+          { label: 'Exercise',    endpoint: `${BASE_URL}/api/chat/lung` },
+          { label: 'Diet',        endpoint: `${BASE_URL}/api/chat/lung` },
+          { label: 'Doctor', endpoint: `${BASE_URL}/api/chat/lung` }
+        ],
+        ckdForm: [
+          { label: 'Medicine',    endpoint: `${BASE_URL}/api/chat/ckd` },
+          { label: 'Exercise',    endpoint: `${BASE_URL}/api/chat/ckd` },
+          { label: 'Home Remedy', endpoint: `${BASE_URL}/api/chat/ckd` },
+          { label: 'Diet',        endpoint: `${BASE_URL}/api/chat/ckd` },
+          { label: 'Doctor Type', endpoint: `${BASE_URL}/api/chat/ckd` }
+        ]
+      };
+    
+      const panel       = document.getElementById('chat-panel');
+      const responseBox = document.getElementById('chat-response');
+      const toggle      = document.getElementById('chat-toggle');
+    
+      // 2) Build the panel buttons for whichever form is active
+      function renderPanelForActiveForm() {
+        const active = document.querySelector('.form-section.active');
+        if (!active) return;
+        const cfg = panelConfig[active.id];
+        if (!cfg) return;
+    
+        panel.innerHTML = '';  // clear existing
+        cfg.forEach(({ label, endpoint }) => {
+          const btn = document.createElement('button');
+          btn.className        = 'chat-option';
+          btn.textContent      = label;
+          btn.dataset.value    = label;
+          btn.dataset.endpoint = endpoint;
+          panel.appendChild(btn);
+        });
       }
-      const { response, error } = await res.json();
-      showResponse(response || `⚠️ ${error}`);
-    } catch (err) {
-      console.error(err);
-      showResponse(`❌ Network error: ${err.message}`);
-    }
-  });
-
+    
+      // 3) Watch your form tabs / sidebar items for clicks
+      document.querySelectorAll('.sidebar ul li').forEach(li => {
+        li.addEventListener('click', () => {
+          // after showForm() toggles .active, rebuild
+          setTimeout(renderPanelForActiveForm, 0);
+        });
+      });
+    
+      // 4) Toggle open/close the panel and clear on open
+      toggle.addEventListener('click', () => {
+        const open = panel.style.display === 'block';
+        panel.style.display       = open ? 'none' : 'block';
+        responseBox.style.display = open ? 'none' : responseBox.style.display;
+        if (!open) responseBox.innerHTML = '';
+      });
+    
+      // 5) Response formatting: strip **bold**, break at dashes
+      function stripMarkdown(s) {
+        return s.replace(/\*\*(.*?)\*\*/g, '$1');
+      }
+      function formatResponse(raw) {
+        let t = stripMarkdown(raw);
+        t = t.replace(/:\s*-\s*/g, ':\n- ').replace(/\s*-\s*/g, '\n- ').trim();
+        return t;
+      }
+      function showResponse(text) {
+        const clean = formatResponse(text);
+        const msg   = document.createElement('div');
+        msg.className   = 'response-message';
+        msg.textContent = clean;
+        responseBox.appendChild(msg);
+        responseBox.style.display = 'block';
+      }
+    
+      // 6) Handle clicks on any dynamically generated option
+      panel.addEventListener('click', async (e) => {
+        if (!e.target.classList.contains('chat-option')) return;
+    
+        // clear previous
+        responseBox.innerHTML     = '';
+        responseBox.style.display = 'block';
+    
+        // fetch from the correct endpoint
+        const url    = e.target.dataset.endpoint;
+        const option = e.target.dataset.value;
+        try {
+          const res = await fetch(url, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ input: option })
+          });
+          if (!res.ok) throw new Error(res.statusText);
+          const { response, error } = await res.json();
+          showResponse(response || error || 'No response.');
+        } catch (err) {
+          showResponse(`Error: ${err.message}`);
+        }
+      });
+    
+      // 7) Initial render when page loads
+      renderPanelForActiveForm();
+    
 
   
     

@@ -7,6 +7,7 @@ from flask_cors import CORS
 from Chatbot import graphh
 from Chatbot_agent import graphd
 from Chatbot_Lung import graphl
+from chatbot_kidney import graphk
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
@@ -267,7 +268,20 @@ def chat_diabetes():
         # Log error (omitted here) and return a generic error message
         return jsonify({ 'error': 'Internal server error' }), 500
 
-    
+@app.route('/api/chat/ckd', methods=['POST'])
+def chat_ckd():
+    data = request.get_json(force=True)
+    user_input = data.get('input', '').strip()
+    if not user_input:
+        return jsonify({ 'error': 'Missing `input` in request body' }), 400
+
+    try:
+        result = graphk.invoke({ 'input': user_input })
+        return jsonify({ 'response': result.get('response', '') })
+    except Exception as e:
+        # here you could log e
+        return jsonify({ 'error': 'Internal server error' }), 500
+       
 # if __name__ == '__main__':
 #    port = int(os.environ.get("PORT", 10000))  # Render provides a PORT variable
 #    app.run(host='0.0.0.0', port=port)
