@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Patient Information Form</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #cfdde7;
+            margin: 0;
+        }
+
+        .info-section{
+            margin-left: 15px;
+        }
+
+        .flex {
+            display: flex;
+            margin-left: 475px;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; 
+            max-width: 450px;
+        }
+        .container {
+            background-color: #FFFDF6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            max-width: 450px;
+        }          
+
+        header {
+            padding: 20px;
+        }
+
+        .logo img {
+            width: 250px; /* Adjusted logo size */
+            height: auto;
+            margin-left: 30px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .logo {
+            font-size: 18px;
+            color: #007bff;
+        }
+        h2 {
+            font-size: 20px;
+            color: #007bff;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="number"],
+    input[type="tel"],
+    textarea {
+        width: 80%; /* Adjusted width */
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 5px;
+        background-color: #EEEEEE;
+    }
+    textarea {
+        height: 100px;
+    }
+    .styled-button {
+        background-color: #007bff;
+        color: white;               
+        padding: 8px 19px;        
+        border: none;              
+        border-radius: 6px;       
+        font-size: 16px;          
+        cursor: pointer;            
+        transition: background-color 0.3s, transform 0.3s; 
+        margin-top: 10px;
+      }
+      .styled-button:hover {
+        background-color: #0056b3; 
+        transform: scale(1.05);     
+      }
+      .styled-button:focus {
+        outline: none;              
+      }
+
+      .marital-status {
+            margin-left: 15px;
+        }
+
+      .emergency-contact {
+            margin-left: 15px;
+        }
+
+      .appointment-reason {
+            margin-left: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex">
+    <div class="container">
+        <header>
+            <h1>Patient Information Form</h1>
+            <div class="logo">
+                <img src="LOGO.png" alt="AIHealthCare Logo" class="h-12 w-15 mb-[25px] ml-[25px]">
+            </div>
+        </header>
+        <form id="patient-form">
+            <section class="info-section">
+                <h2>INFORMATION</h2>
+                <label for="patient-name">Patient Name:</label>
+                <input type="text" id="patient-name" placeholder="Enter patient's name">
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob">
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" placeholder="Enter age">
+
+                <label for="sex">Sex:</label>
+                <input type="text" id="sex" placeholder="Enter sex">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter email">
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" placeholder="Enter address">
+
+                <label for="cell-phone">Cell Phone:</label>
+                <input type="tel" id="cell-phone" placeholder="Enter cell phone">
+
+                <label for="work-phone">Work Phone:</label>
+                <input type="tel" id="work-phone" placeholder="Enter work phone">
+
+                <label for="authorized-person">Authorized Person:</label>
+                <input type="text" id="authorized-person" placeholder="Enter name">
+            </section>
+
+            <section class="marital-status">
+                <h2>MARITAL STATUS</h2>
+                <label><input type="checkbox"> Divorced</label>
+                <label><input type="checkbox"> Single</label>
+                <label><input type="checkbox"> Married</label>
+                <label><input type="checkbox"> Significant other</label>
+                <label><input type="checkbox"> Widowed</label>
+                <label><input type="checkbox"> Other: <input type="text" placeholder="Specify"></label>
+            </section>
+
+            <section class="emergency-contact">
+                <h2>EMERGENCY CONTACT</h2>
+                <label for="emergency-contact-1">Emergency Contact 1:</label>
+                <input type="text" id="emergency-contact-1" placeholder="Enter name">
+                <label for="emergency-phone-1">Phone:</label>
+                <input type="tel" id="emergency-phone-1" placeholder="Enter phone">
+
+                <label for="emergency-contact-2">Emergency Contact 2:</label>
+                <input type="text" id="emergency-contact-2" placeholder="Enter name">
+                <label for="emergency-phone-2">Phone:</label>
+                <input type="tel" id="emergency-phone-2" placeholder="Enter phone">
+
+                <label for="primary-care-physician">Primary Care Physician:</label>
+                <input type="text" id="primary-care-physician" placeholder="Enter name">
+                <label for="physician-phone">Phone:</label>
+                <input type="tel" id="physician-phone" placeholder="Enter phone">
+            </section>
+
+            <section class="appointment-reason">
+                <h2>REASON FOR APPOINTMENT</h2>
+                <textarea id="reason" placeholder="Enter reason for appointment"></textarea>
+            </section>
+
+            <button class="styled-button" type="submit">Submit</button>
+        </form>
+    </div>
+  </div>
+</body>
+<script>
+    const form = document.getElementById('patient-form');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      window.location.href = 'checkup.html';
+    });
+  </script>
+</html>

@@ -212,7 +212,7 @@ bg-[position:0px_0px,center]
                 if (response.ok) {
                     localStorage.setItem('accessToken', result.accessToken);
                     document.cookie = `refreshToken=${result.refreshToken}; path=/; secure`;
-                    window.location.href = 'checkup.html';
+                    window.location.href = 'form.html';
                 } else {
                     alert(result.error || 'Login failed');
                 }
